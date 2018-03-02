@@ -8,11 +8,8 @@ public class Enemy : MonoBehaviour {
 	public int enemySpeed = 1; // How fast enemy is moving
 
 
-
-
 	// Use this for initialization
 	void Start () {
-
 
 	}
 	
@@ -28,10 +25,9 @@ public class Enemy : MonoBehaviour {
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);
 
 	}
-	// To Do: EnemyHealth is reduced dependig on what tipe of gun he got shot at.
+	// To Do: EnemyHealth is reduced depending on what type of gun he got shot with.
 	public void Health()
 	{
-
 
 	}
 
