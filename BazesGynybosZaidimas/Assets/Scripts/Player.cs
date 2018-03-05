@@ -7,6 +7,9 @@ public class Player : MonoBehaviour {
     public float current_player_hp = 3;
     public int player_HP = 3;
     public bool invincible = false;
+    public static int score = 0;
+    public Text scoreLine;
+    
 
     public Image HP;
     IEnumerator OnCollisionEnter2D(Collision2D col)
@@ -17,7 +20,7 @@ public class Player : MonoBehaviour {
 
             invincible = true;
             yield return new WaitForSeconds(1);
-            invincible = false;        
+            invincible = false;
         }
 
     }
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour {
     void Update()
     {
         HealthBar();
+        TrackScore();
         IsDead();
     }
 
@@ -45,5 +49,8 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-	
+    public void TrackScore()
+    {
+        scoreLine.text = "score : " + score;
+    }
 }

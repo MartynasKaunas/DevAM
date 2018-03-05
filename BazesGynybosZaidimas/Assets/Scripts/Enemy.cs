@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public float enemySpeed = 1;         // How fast enemy is moving
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
+    public int scoreValue = 17;
     public int count_deaths_this_enemy;
     public Image HP;
     void OnCollisionEnter2D (Collision2D col)
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour {
             if (curent_enemy_hp <= 0)
             {
                 count_deaths_this_enemy ++;
+                Player.score += scoreValue;
+                //Player.scoreLine.text = "score : " + Player.score; // text tipas negali būti static :(
                 Destroy(gameObject);
             }
         }
