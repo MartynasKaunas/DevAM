@@ -238,8 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31cb90084f66b9478d99133cb8045c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curent_player_hp: 3
+  current_player_hp: 3
   player_HP: 3
+  invincible: 0
   HP: {fileID: 1881237595}
 --- !u!212 &250388594
 SpriteRenderer:
@@ -825,7 +826,7 @@ GameObject:
   - component: {fileID: 1415817576}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,10 +842,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8638c3c178435b47a327401e4779882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 1
+  enemySpeed: 3
   curent_enemy_hp: 10
   enemy_HP: 10
-  count_deths_this_enemy: 0
+  count_deaths_this_enemy: 0
   HP: {fileID: 752477004}
 --- !u!212 &1415817573
 SpriteRenderer:
@@ -940,7 +941,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
