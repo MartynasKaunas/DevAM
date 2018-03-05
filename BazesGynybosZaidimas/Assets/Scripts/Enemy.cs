@@ -5,12 +5,11 @@ using UnityEngine;
 
 
 public class Enemy : MonoBehaviour {
-	//Too access variables from different scripts variable should be changed to static
-     public int enemySpeed = 1; // How fast enemy is moving
-    public float curent_enemy_hp=10;
-  //  public float start_hp;
+	//To access variables from different scripts variable should be changed to static
+    public float enemySpeed = 1;         // How fast enemy is moving
+    public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
-    public int count_deths_this_enemy;
+    public int count_deaths_this_enemy;
     public Image HP;
     void OnCollisionEnter2D (Collision2D col)
     {
@@ -19,39 +18,34 @@ public class Enemy : MonoBehaviour {
             curent_enemy_hp -= 1;
             if (curent_enemy_hp <= 0)
             {
-                count_deths_this_enemy ++;
+                count_deaths_this_enemy ++;
                 Destroy(gameObject);
             }
         }
+        if (col.gameObject.tag == "Player")
+        {
+            Recoil();
+        }
 
     }
+
     void HealthBar() {
         HP.fillAmount = curent_enemy_hp / enemy_HP;
     }
 	
-
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
 	// Update is called once per frame
-	void Update () {
+	void Update(){
         HealthBar();
-		Movement (); 
-		                                                                    
+		Movement (); 		                                                                    
 	}
 
-	public void Movement(){
-		
+	public void Movement(){		
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);
-
 	}
-	// To Do: EnemyHealth is reduced depending on what type of gun he got shot with.
-	public void Health()
-	{
 
-	}
+    public void Recoil(){
+        transform.Translate(Vector2.left * Time.deltaTime * 15);
+        enemySpeed = 1;
+    }
 
 }

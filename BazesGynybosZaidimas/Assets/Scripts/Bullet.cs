@@ -9,9 +9,4 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, destroyTime);
     }
-
-    //To do
-    //Kodo gabaliukas, padarantis, kad kulka žalotų tikriausiai turėtų būti čia
-    //Kažkas maždaug if(collision = priešas) priešas.removehealth
-
 }

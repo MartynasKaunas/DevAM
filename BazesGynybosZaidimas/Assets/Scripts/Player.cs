@@ -4,25 +4,26 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public float curent_player_hp = 3;
+    public float current_player_hp = 3;
     public int player_HP = 3;
+    public bool invincible = false;
+
     public Image HP;
-    void OnCollisionEnter2D(Collision2D col)
+    IEnumerator OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Enemy")
+        if (col.gameObject.tag == "Enemy" && invincible == false)
         {
-            curent_player_hp -= 1;
-            if (curent_player_hp == 0)
-            {
-                
-                Destroy(gameObject);
-            }
+            current_player_hp -= 1;
+
+            invincible = true;
+            yield return new WaitForSeconds(1);
+            invincible = false;        
         }
 
     }
     void HealthBar()
     {
-        HP.fillAmount = curent_player_hp / player_HP;
+        HP.fillAmount = current_player_hp / player_HP;
     }
     // Use this for initialization
     void Start()
@@ -34,8 +35,15 @@ public class Player : MonoBehaviour {
     void Update()
     {
         HealthBar();
+        IsDead();
     }
 
-
+    void IsDead()
+    {
+        if (current_player_hp == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 	
 }
