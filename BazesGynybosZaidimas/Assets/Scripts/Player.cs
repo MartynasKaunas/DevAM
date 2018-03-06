@@ -46,6 +46,7 @@ public class Player : MonoBehaviour {
     {
         if (current_player_hp == 0)
         {
+            FindObjectOfType<Ending>().EndMePlz();
             Destroy(gameObject);
         }
     }

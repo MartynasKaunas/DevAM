@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour {
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
     public int scoreValue = 17;
-    public int count_deaths_this_enemy;
+    public static string name = "Raudons kubas";
+    public static int count_deaths_this_enemy;
     public Image HP;
     void OnCollisionEnter2D (Collision2D col)
     {
