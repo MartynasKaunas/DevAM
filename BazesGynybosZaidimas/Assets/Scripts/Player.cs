@@ -40,6 +40,9 @@ public class Player : MonoBehaviour {
         HealthBar();
         TrackScore();
         IsDead();
+
+        if (Input.GetKey("escape"))
+            Application.Quit();
     }
 
     void IsDead()
