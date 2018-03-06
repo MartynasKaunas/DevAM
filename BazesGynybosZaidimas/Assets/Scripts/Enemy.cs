@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour {
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
     public int scoreValue = 17;
-    public static string name = "Raudons kubas";
+    public static string name = "Raudonas kubas";
     public static int count_deaths_this_enemy;
     public Image HP;
     void OnCollisionEnter2D (Collision2D col)
@@ -18,13 +18,7 @@ public class Enemy : MonoBehaviour {
         if(col.gameObject.tag == "Bullet")
         {
             curent_enemy_hp -= 1;
-            if (curent_enemy_hp <= 0)
-            {
-                count_deaths_this_enemy ++;
-                Player.score += scoreValue;
-                //Player.scoreLine.text = "score : " + Player.score; // text tipas negali būti static :(
-                Destroy(gameObject);
-            }
+            
         }
         if (col.gameObject.tag == "Player")
         {
@@ -40,6 +34,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update(){
         HealthBar();
+        IsDead();
 		Movement (); 		                                                                    
 	}
 
@@ -52,4 +47,14 @@ public class Enemy : MonoBehaviour {
         enemySpeed = 1;
     }
 
+    void IsDead()
+    {
+        if (curent_enemy_hp <= 0)
+        {
+            count_deaths_this_enemy++;
+            Player.score += scoreValue;
+            //Player.scoreLine.text = "score : " + Player.score; // text tipas negali būti static :(
+            Destroy(gameObject);
+        }
+    }
 }

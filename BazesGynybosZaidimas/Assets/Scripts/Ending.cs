@@ -10,9 +10,7 @@ public class Ending : MonoBehaviour {
 
     public void EndMePlz()
     {
-        //išveda tik pirmą eilute su geim over, statistikoms gal nelieka vietos
-        endReport.text = "ゲーム　オーワ" + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " " + Enemy.name;
-
+        endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " " + Enemy.name;
     }
 
     // Use this for initialization
