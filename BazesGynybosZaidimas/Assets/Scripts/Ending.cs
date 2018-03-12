@@ -18,4 +18,11 @@ public class Ending : MonoBehaviour {
     {
         endReport.text = "";
     }
+
+    void Update()
+    {
+        if (Input.GetKey("escape"))
+            Application.Quit();
+    }
 }
+
