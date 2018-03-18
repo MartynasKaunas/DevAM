@@ -825,9 +825,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTime: 1
   maxTime: 4
-  enemyPrefab: {fileID: 1701142043301278, guid: 9741964ced4a0eb429bdbd937a856d2a,
+  enemyPrefab: {fileID: 1791711128478766, guid: 52a101a431bdf0d4caeeaec93def31f3,
     type: 2}
-  enemyPrefab1: {fileID: 1791711128478766, guid: 52a101a431bdf0d4caeeaec93def31f3,
+  enemyPrefab1: {fileID: 1701142043301278, guid: 9741964ced4a0eb429bdbd937a856d2a,
     type: 2}
 --- !u!1 &992734685
 GameObject:

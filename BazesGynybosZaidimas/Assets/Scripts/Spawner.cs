@@ -8,27 +8,32 @@ public class Spawner : MonoBehaviour
     public float minTime = 3.0f;
     public float maxTime = 8.0f;
     //public GameObject[] enemies;  // Array of enemy prefabs.
-    public GameObject enemyPrefab;
-    public GameObject enemyPrefab1;
+    public GameObject enemyPrefab;//letas
+    public GameObject enemyPrefab1;//greitas
+    public GameObject enemyPrefab2;//skraido
     IEnumerator SpawnObject(float seconds)
     {
         Debug.Log("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
-      
-        Vector3 V;
-        V = new Vector3(transform.position.x, Random.Range(-3.0f, 2.5f));
+
+
+        Vector3 V = new Vector3(transform.position.x, Random.Range(-3.0f, 2.5f));
+        Vector3 V_flaying = new Vector3(transform.position.x, Random.Range(2.5f, 5f));
         //   Random randomSp = new Random();
 
-        int i = Random.Range(1,3);
-        Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");
+        int i = Random.Range(1,4);//parenka prieša
+        Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
         switch (i)
         {
             case 1:
-               Instantiate(enemyPrefab1, V, transform.rotation);
+               Instantiate(enemyPrefab, V, transform.rotation);
                 break;
             case 2:
-                Instantiate(enemyPrefab, V, transform.rotation);
+                Instantiate(enemyPrefab1, V, transform.rotation);
+                break;
+            case 3:
+                Instantiate(enemyPrefab2,V_flaying , transform.rotation);
                 break;
         }
         
