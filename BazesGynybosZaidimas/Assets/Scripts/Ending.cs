@@ -28,6 +28,14 @@ public class Ending : MonoBehaviour {
 
     }
 
+    public void NextLevel()
+    {
+        Freeze();
+
+
+        FindObjectOfType<Spawner>().LevelUpSpawner();
+    }
+
     void Update()
     {
         if (Input.GetKey("escape"))

@@ -62,11 +62,22 @@ public class Spawner : MonoBehaviour
             
         }
         TrackLevel();
+
+        //For tessting only
+        if (Input.GetKey("l"))
+            LevelUpSpawner();
     }
 
     public void TrackLevel()
     {
         levelLine.text = "Level " + level;
         leftForLevel.text = "Untill next level " + leftToSpawn;
+    }
+
+    public void LevelUpSpawner()
+    {
+        leftToSpawn = 2 + level++;
+        minTime = minTime * 0.9f;
+        maxTime = maxTime * 0.9f;
     }
 }
