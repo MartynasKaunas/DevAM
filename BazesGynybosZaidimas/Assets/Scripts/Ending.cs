@@ -19,10 +19,21 @@ public class Ending : MonoBehaviour {
         endReport.text = "";
     }
 
+    public void Freeze()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        else
+            Time.timeScale = 0;
+
+    }
+
     void Update()
     {
         if (Input.GetKey("escape"))
             Application.Quit();
+        if (Input.GetKey("p"))
+            Freeze();
     }
 }
 
