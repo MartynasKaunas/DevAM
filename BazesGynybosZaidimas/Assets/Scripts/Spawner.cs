@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    int level = 1;
+    public Text levelLine;
+    public static int leftToSpawn = 2;
+    public static int currentlyAlive = 1;//pradžioje yra vienas gyvas, kai jį ištrinsim reiks pakeisti į 0
+    public Text leftForLevel;
     bool isSpawning = false;
     public float minTime = 3.0f;
     public float maxTime = 8.0f;
@@ -36,24 +42,31 @@ public class Spawner : MonoBehaviour
                 Instantiate(enemyPrefab2,V_flaying , transform.rotation);
                 break;
         }
-        
-        
 
-    
+
+
+        leftToSpawn--;//one less enemy left
+        currentlyAlive++;
         //We've spawned, so now we could start another spawn     
         isSpawning = false;
+        
     }
 
     void Update()
     {
         //We only want to spawn one at a time, so make sure we're not already making that call
-        if (!isSpawning)
+        if (!isSpawning && leftToSpawn > 0)
         {
             isSpawning = true; //Yep, we're going to spawn
             StartCoroutine(SpawnObject(Random.Range(minTime, maxTime)));
-
+            
         }
+        TrackLevel();
     }
 
-
+    public void TrackLevel()
+    {
+        levelLine.text = "Level " + level;
+        leftForLevel.text = "Untill next level " + leftToSpawn;
+    }
 }

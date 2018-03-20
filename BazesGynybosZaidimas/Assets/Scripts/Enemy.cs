@@ -55,6 +55,9 @@ public class Enemy : MonoBehaviour {
             Player.score += scoreValue;
             //Player.scoreLine.text = "score : " + Player.score; // text tipas negali būti static :(
             Destroy(gameObject);
+            Spawner.currentlyAlive--;
+            if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
+                FindObjectOfType<Ending>().Freeze();
         }
     }
 }
