@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 212879807542403436}
   - component: {fileID: 114026136887587694}
   - component: {fileID: 61939692983192536}
+  - component: {fileID: 50485654628063204}
   m_Layer: 0
   m_Name: Slow
   m_TagString: Enemy
@@ -95,6 +96,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50485654628063204
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701142043301278}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!61 &61939692983192536
 BoxCollider2D:
   m_ObjectHideFlags: 1
