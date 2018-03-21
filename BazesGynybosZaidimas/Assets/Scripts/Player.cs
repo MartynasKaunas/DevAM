@@ -4,25 +4,23 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public static float current_player_HP = 3;
-    public static int player_HP = 3;
+    public static float current_player_hp = 3;
+    public int player_HP = 3;
     public bool invincible = false;
-    public static int score = 100;
+    public static int score = 0;
     public Text scoreLine;
 
 	public Text bulletsText;
-    public static int maxBulletCount = 20;
-	public static int bulletCount = maxBulletCount;
-    public static int weaponDamage = 1;
+	public static int bulletsCount = 20;
 
-    public static bool magazineEmpty = false;
+	public static bool magazineEmpty = false;
 
     public Image HP;
     IEnumerator OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy" && invincible == false)
         {
-            current_player_HP -= 1;
+            current_player_hp -= 1;
 
             invincible = true;
             yield return new WaitForSeconds(1);
@@ -32,7 +30,7 @@ public class Player : MonoBehaviour {
     }
     void HealthBar()
     {
-        HP.fillAmount = current_player_HP / player_HP;
+        HP.fillAmount = current_player_hp / player_HP;
     }
     // Use this for initialization
     void Start()
@@ -46,13 +44,13 @@ public class Player : MonoBehaviour {
         HealthBar();
         TrackScore();
         IsDead();
-		TrackBullets();
-		Reload();
+		TrackBullets ();
+		Reload ();
     }
 
     void IsDead()
     {
-        if (current_player_HP == 0)
+        if (current_player_hp == 0)
         {
             FindObjectOfType<Ending>().EndMePlz();
             Destroy(gameObject);
@@ -60,10 +58,10 @@ public class Player : MonoBehaviour {
     }
 	public void TrackBullets()
 	{
-		if (bulletCount <= 0) {
+		if (bulletsCount <= 0) {
 			magazineEmpty = true;
 		}
-		bulletsText.text = "BulletsLeft: " + bulletCount;
+		bulletsText.text = "BulletsLeft: " + bulletsCount;
 	}
     public void TrackScore()
     {
@@ -73,7 +71,7 @@ public class Player : MonoBehaviour {
 	{
 		if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R)) {
 			magazineEmpty = false;
-			bulletCount = maxBulletCount;
+			bulletsCount = 20;
 		}
 	}
 
