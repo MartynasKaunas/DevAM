@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     public GameObject enemyPrefab2;//skraido
     IEnumerator SpawnObject(float seconds)
     {
-        Debug.Log("Waiting for " + seconds + " seconds");
+    //    Debug.Log("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
 
@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
         //   Random randomSp = new Random();
 
         int i = Random.Range(1,4);//parenka prieša
-        Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
+  //      Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
         switch (i)
         {
             case 1:
