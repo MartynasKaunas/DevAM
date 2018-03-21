@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    int level = 1;
+	public static int level = 1;
     public Text levelLine;
     public static int leftToSpawn = 2;
     public static int currentlyAlive = 1;//pradžioje yra vienas gyvas, kai jį ištrinsim reiks pakeisti į 0

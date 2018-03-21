@@ -13,11 +13,13 @@ public class Enemy : MonoBehaviour {
     public static string name = "Raudonas kubas";
     public static int count_deaths_this_enemy;
     public Image HP;
+	public static int weaponDamage = 1;
+
     void OnCollisionEnter2D (Collision2D col)
     {
         if(col.gameObject.tag == "Bullet")
         {
-            curent_enemy_hp -= 1;
+			curent_enemy_hp -= weaponDamage;
             
         }
         if (col.gameObject.tag == "Player")

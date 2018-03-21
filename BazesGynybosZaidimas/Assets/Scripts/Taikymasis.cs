@@ -26,11 +26,12 @@ public class Taikymasis : MonoBehaviour {
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
         transform.rotation = rotation;
 
-        if (Input.GetButtonDown("Fire1")) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
+		if (Input.GetButtonDown("Fire1") && Player.magazineEmpty == false) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
         {
             GameObject shot = (GameObject)Instantiate(projectilePrefab, exitPoint, rotation);
             rb = shot.GetComponent<Rigidbody2D>();
             rb.AddForce(direction * speed);
+			Player.bulletsCount -= 1;
         }
     }
 
