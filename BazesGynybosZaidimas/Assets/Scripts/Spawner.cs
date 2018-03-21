@@ -7,19 +7,18 @@ public class Spawner : MonoBehaviour
 {
 	public static int level = 1;
     public Text levelLine;
-    public static int leftToSpawn = 2;
-    public static int currentlyAlive = 1;//pradžioje yra vienas gyvas, kai jį ištrinsim reiks pakeisti į 0
+    public static int leftToSpawn = 0;
+    public static int currentlyAlive = 1;   //pradžioje yra vienas gyvas, kai jį ištrinsim reiks pakeisti į 0
     public Text leftForLevel;
     bool isSpawning = false;
     public float minTime = 3.0f;
     public float maxTime = 8.0f;
-    //public GameObject[] enemies;  // Array of enemy prefabs.
-    public GameObject enemyPrefab;//letas
-    public GameObject enemyPrefab1;//greitas
-    public GameObject enemyPrefab2;//skraido
+    public GameObject enemyPrefab;    //lėtas
+    public GameObject enemyPrefab1;   //greitas
+    public GameObject enemyPrefab2;   //skraido
     IEnumerator SpawnObject(float seconds)
     {
-    //    Debug.Log("Waiting for " + seconds + " seconds");
+        Debug.Log("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
 
@@ -29,7 +28,7 @@ public class Spawner : MonoBehaviour
         //   Random randomSp = new Random();
 
         int i = Random.Range(1,4);//parenka prieša
-  //      Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
+        Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
         switch (i)
         {
             case 1:
@@ -71,7 +70,7 @@ public class Spawner : MonoBehaviour
     public void TrackLevel()
     {
         levelLine.text = "Level " + level;
-        leftForLevel.text = "Untill next level " + leftToSpawn;
+        leftForLevel.text = "Enemies left: " + leftToSpawn;
     }
 
     public void LevelUpSpawner()
