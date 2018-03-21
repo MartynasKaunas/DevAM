@@ -15,10 +15,10 @@ public class Audio : MonoBehaviour
     {
         MusicSourceEnd.clip = MusicClipEnd;
     }
-
+    
     // Update is called once per frame
     void Update()
-    {   
+    {
         if (Ending.IsDead)
         {
            
