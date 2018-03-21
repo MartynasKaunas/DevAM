@@ -7,10 +7,12 @@ public class Ending : MonoBehaviour {
 
     public Text endReport;
     bool ended;
-
+ public  static bool IsDead = false;
     public void EndMePlz()
     {
+
         endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " Enemies";
+        IsDead = true;
     }
 
     // Use this for initialization
