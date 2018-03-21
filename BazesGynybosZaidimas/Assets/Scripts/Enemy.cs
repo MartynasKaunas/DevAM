@@ -10,16 +10,16 @@ public class Enemy : MonoBehaviour {
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
     public int scoreValue = 17;
-    public static string name = "Raudonas kubas";
+    public static string name = "enemy";
     public static int count_deaths_this_enemy;
     public Image HP;
-	public static int weaponDamage = 1;
+
 
     void OnCollisionEnter2D (Collision2D col)
     {
         if(col.gameObject.tag == "Bullet")
         {
-			curent_enemy_hp -= weaponDamage;
+			curent_enemy_hp -= Player.weaponDamage;
             
         }
         if (col.gameObject.tag == "Player")
