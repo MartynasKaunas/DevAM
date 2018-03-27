@@ -20,8 +20,8 @@ public class shopMenu : MonoBehaviour
     public Text currentHealth;
     public Text maxAmmo;
 
-    public bool shotgunBought = false;
-    public bool cannonBought = false;
+    public static bool shotgunBought = false;
+    public static bool cannonBought = false;
 
     int temp_currentLevel = 1;
     // Use this for initialization

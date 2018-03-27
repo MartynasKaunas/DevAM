@@ -11,12 +11,10 @@ public class Audio : MonoBehaviour
     // the component that Unity uses to play your clip
     public AudioSource MusicSourceEnd;
   
-
     // Use this for initialization
     void Start()
     {
-                MusicSourceEnd.clip = MusicClipEnd;
-       
+       MusicSourceEnd.clip = MusicClipEnd; 
     }
 
   
@@ -24,12 +22,11 @@ public class Audio : MonoBehaviour
     void Update()
     {
      
-        if (Ending.IsDead)
-        {
-           
+        if (Ending.GameOver)
+        {          
             Debug.Log("tue if");//test
             MusicSourceEnd.Play();
-            Ending.IsDead = false;
+            //Ending.GameOver = false;
         }
 
     }

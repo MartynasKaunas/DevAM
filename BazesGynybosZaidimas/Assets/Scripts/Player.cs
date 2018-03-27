@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     public static float current_player_HP = 3;
     public static int player_HP = 3;
     public bool invincible = false;
-    public static int score = 100;
+    public static int score = 50;
     public Text scoreLine;
 
 	public Text bulletsText;
