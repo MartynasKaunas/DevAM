@@ -216,6 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8638c3c178435b47a327401e4779882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTakenParticle: {fileID: 1357259761295042, guid: 46b49313ae68f1741a647509635763b1,
+    type: 2}
   enemySpeed: 3
   curent_enemy_hp: 10
   enemy_HP: 10

@@ -24,7 +24,6 @@ public class Audio : MonoBehaviour
      
         if (Ending.GameOver)
         {          
-            Debug.Log("tue if");//test
             MusicSourceEnd.Play();
             //Ending.GameOver = false;
         }
