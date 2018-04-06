@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Taikymasis : MonoBehaviour {
 
+    public GameObject basicShotParticle;
+    public GameObject cannonShotParticle;
+    public GameObject shotgunShotParticle;
 
     public float turnSpeed = 10f;       //bokštelio vamzdžio sukimosi greitis
 
@@ -13,15 +16,16 @@ public class Taikymasis : MonoBehaviour {
     public static int weaponType = 1;   //1 - pradinis ginklas, 2 - shotgun'as, 3 - didelė patranka
     private Rigidbody2D rb;
 
-    float fireRate = 0.5f;
+    public static float fireRate = 0.5f;
     float nextFire;
 
     void Update()
     {
         Rotate();
-   
+
         Vector2 exitPoint = new Vector2(exit_Point.transform.position.x, exit_Point.transform.position.y);
- 
+        Vector2 particleExitPoint = new Vector2(exit_Point.transform.position.x - 1, exit_Point.transform.position.y);
+
         if (Input.GetButtonDown("Fire1") && Player.magazineEmpty == false && Time.time > nextFire) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
         {
             nextFire = Time.time + fireRate;
@@ -40,6 +44,7 @@ public class Taikymasis : MonoBehaviour {
                     GameObject shot = (GameObject)Instantiate(projectilePrefab, exitPoint, rotation);
                     rb = shot.GetComponent<Rigidbody2D>();
                     rb.AddForce(direction * speed);
+                    Instantiate(basicShotParticle, particleExitPoint, rotation);               
                     Player.bulletCount -= 1;
                     break;
            
@@ -71,6 +76,8 @@ public class Taikymasis : MonoBehaviour {
                     rb2.AddForce(direction2 * speed);
                     rb3.AddForce(direction3 * speed);
 
+                    Instantiate(shotgunShotParticle, particleExitPoint, rotation2);
+
                     Player.bulletCount -= 3;
                     if(Player.bulletCount < 0)
                         Player.bulletCount = 0;
@@ -89,14 +96,14 @@ public class Taikymasis : MonoBehaviour {
                     GameObject shotB = (GameObject)Instantiate(projectilePrefab, exitPoint, rotationB);
                     shotB.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                     rb = shotB.GetComponent<Rigidbody2D>();              
-                    rb.AddForce(directionB * speed * 50);
+                    rb.AddForce(directionB * speed * 40);
                     rb.mass = 1;
+
+                    Instantiate(cannonShotParticle, particleExitPoint, rotationB);
 
                     Player.bulletCount -= 1;
                     break;
-            }
-                 
-
+            }               
         }
     }
 

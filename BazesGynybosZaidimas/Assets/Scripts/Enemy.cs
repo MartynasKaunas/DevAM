@@ -5,7 +5,9 @@ using UnityEngine;
 
 
 public class Enemy : MonoBehaviour {
-	//To access variables from different scripts variable should be changed to static
+    //To access variables from different scripts variable should be changed to static
+
+    public GameObject damageTakenParticle;
     public float enemySpeed = 1;         // How fast enemy is moving
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
@@ -20,7 +22,7 @@ public class Enemy : MonoBehaviour {
         if(col.gameObject.tag == "Bullet")
         {
 			curent_enemy_hp -= Player.weaponDamage;
-            
+            Instantiate(damageTakenParticle, transform.position, transform.rotation);      
         }
         if (col.gameObject.tag == "Player")
         {
