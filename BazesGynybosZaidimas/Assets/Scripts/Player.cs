@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static float current_player_HP = 3;
-    public static int player_HP = 3;
+    public static float current_player_HP = 30;
+    public static int player_HP = 30;
     public static float current_player_MP = 50;
     public static int player_MP = 100;
 
