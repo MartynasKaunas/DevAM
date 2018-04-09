@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     public static bool magazineEmpty = false;
 
+	public Image reloadAnim;
     public Image HP;
     public Image MP;
     public Text HP_count;
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         IsDead();
         TrackBullets();
         Reload();
+		reloadAnim.fillAmount = cur_reload;
     }
 
     void IsDead()
@@ -99,14 +101,36 @@ public class Player : MonoBehaviour
         scoreLine.text = "score : " + score;
     }
 
-    public void Reload()
-    {
-        if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
-        {
-            magazineEmpty = false;
-            bulletCount = maxBulletCount;
-        }
-    }
+	public void Reload()
+	{
+		if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
+		{
+			
+			StartCoroutine (loadingReload ());
+			StartCoroutine (reloadPistol());
+
+		}
+	}
+
+	IEnumerator reloadPistol()
+	{		
+		yield return new WaitForSeconds(1f);
+		magazineEmpty = false;
+		bulletCount = maxBulletCount;
+
+
+	}
+	public float cur_reload =0;
+	public float s_reload = 1;
+
+	IEnumerator loadingReload()
+	{
+		while (cur_reload <= s_reload) {
+			cur_reload += 0.1f;		
+			yield return new WaitForSeconds (0.08f);
+		}
+		cur_reload = 0;
+	}
 
     IEnumerator regenerateMana()
     {

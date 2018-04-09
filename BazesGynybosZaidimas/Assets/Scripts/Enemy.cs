@@ -28,13 +28,18 @@ public class Enemy : MonoBehaviour {
         {
             Recoil();
         }
+		if(col.gameObject.tag == "Trap")
+		{
+			curent_enemy_hp -= 5;
+			Destroy(GameObject.FindGameObjectWithTag ("Trap"));
+		}
     }
 
     void HealthBar() {
         HP.fillAmount = curent_enemy_hp / enemy_HP;
     }
     void start() {
-      anim= GetComponent<Animator>(); //animacija
+      anim = GetComponent<Animator>(); //animacija
 
 
     }
