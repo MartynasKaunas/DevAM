@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         Vector3 V_flaying = new Vector3(transform.position.x, Random.Range(2.5f, 5f));
         //   Random randomSp = new Random();
 
-        int i = Random.Range(1,4);//parenka prieša
+        int i = Random.Range(1,3);//parenka prieša
         Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
         switch (i)
         {

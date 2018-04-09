@@ -24,11 +24,10 @@ public class Enemy : MonoBehaviour {
 			curent_enemy_hp -= Player.weaponDamage;
             Instantiate(damageTakenParticle, transform.position, transform.rotation);      
         }
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag== "Wall")
         {
             Recoil();
         }
-
     }
 
     void HealthBar() {
@@ -67,18 +66,11 @@ public class Enemy : MonoBehaviour {
             Player.score += scoreValue;
             anim.SetBool("death", true);
             float a = 5f;
-            Wait(a);
-             
             Destroy(gameObject);
             Spawner.currentlyAlive--;
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
                 FindObjectOfType<Ending>().NextLevel();
         }
     }
-    IEnumerator Wait(float seconds)
-    {float time = 1f;
-        Debug.Log("Waiting for " + seconds + " seconds");
-
-        yield return new WaitForSeconds(seconds);
-    }
+    
     }
