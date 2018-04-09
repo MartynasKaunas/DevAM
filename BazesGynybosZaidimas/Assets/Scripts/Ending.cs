@@ -43,6 +43,7 @@ public class Ending : MonoBehaviour {
         {
             if (GameOver == true)
             {
+                
                 //iš naujo pradedant žaidimą reikia visus statsus gražint į pradines reikšmes, gal yra kažkoks lengvesnis būdas
                 Player.player_HP = 3;
                 Player.current_player_HP = 3;
@@ -62,9 +63,10 @@ public class Ending : MonoBehaviour {
                 Spawner.leftToSpawn = 0;
                 Spawner.currentlyAlive = 1;
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(0);
                 
                 GameOver = false;
+                
             }
             else Application.Quit();
         }         
