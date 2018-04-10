@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     //To access variables from different scripts variable should be changed to static
+
     public Animator anim;//animacija
     public GameObject damageTakenParticle;
     public float enemySpeed = 1;         // How fast enemy is moving
@@ -45,14 +46,19 @@ public class Enemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update(){
-     //   float move = Input.GetAxis("Horizontal");
+
+        //float move = Input.GetAxis("Horizontal");
+
         Debug.Log(enemySpeed);
-        // float move = 2.0f;
-     anim.SetFloat("speed",enemySpeed);
+
+        //float move = 2.0f;
+
+        anim.SetFloat("speed", enemySpeed);
         HealthBar();
         IsDead();
-		Movement (); 		                                                                    
-	}
+		Movement();
+        Physics2D.IgnoreLayerCollision(10, 10);
+    }
 
 	public void Movement(){		
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);

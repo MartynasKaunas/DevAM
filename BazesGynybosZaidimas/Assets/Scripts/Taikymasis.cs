@@ -96,8 +96,8 @@ public class Taikymasis : MonoBehaviour {
                     GameObject shotB = (GameObject)Instantiate(projectilePrefab, exitPoint, rotationB);
                     shotB.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                     rb = shotB.GetComponent<Rigidbody2D>();              
-                    rb.AddForce(directionB * speed * 40);
-                    rb.mass = 1;
+                    rb.AddForce(directionB * speed * 70);
+                    rb.mass = 0.2f;
 
                     Instantiate(cannonShotParticle, particleExitPoint, rotationB);
 

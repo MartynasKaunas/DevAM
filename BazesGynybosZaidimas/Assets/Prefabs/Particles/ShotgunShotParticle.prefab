@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4424411669986700}
   - component: {fileID: 198755382162101856}
   - component: {fileID: 199457038157114370}
+  - component: {fileID: 114086072637663714}
   m_Layer: 0
   m_Name: ShotgunShotParticle
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -174.655, y: 89.99999, z: -89.54999}
+--- !u!114 &114086072637663714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876424157814662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39744c87e84e07a4e962d954d47ef2ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 2
 --- !u!198 &198755382162101856
 ParticleSystem:
   m_ObjectHideFlags: 1

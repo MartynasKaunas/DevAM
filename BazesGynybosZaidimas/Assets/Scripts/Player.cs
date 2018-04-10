@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static float current_player_HP = 30;
-    public static int player_HP = 30;
+    public static float current_player_HP = 5;
+    public static int player_HP = 5;
     public static float current_player_MP = 50;
     public static int player_MP = 100;
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(regenerateMana());
+        StartCoroutine(RegenerateMana());
         MP_text.text = "MP";
         HP_text.text = "HP";
 
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
 		if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
 		{
 			
-			StartCoroutine (loadingReload ());
+			StartCoroutine (LoadingReload ());
 			StartCoroutine (reloadPistol());
 
 		}
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 	public float cur_reload =0;
 	public float s_reload = 1;
 
-	IEnumerator loadingReload()
+	IEnumerator LoadingReload()
 	{
 		while (cur_reload <= s_reload) {
 			cur_reload += 0.1f;		
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
 		cur_reload = 0;
 	}
 
-    IEnumerator regenerateMana()
+    IEnumerator RegenerateMana()
     {
         while (true)
         {

@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 	public static int level = 1;
     public Text levelLine;
     public static int leftToSpawn = 0;
-    public static int currentlyAlive = 1;   //pradžioje yra vienas gyvas, kai jį ištrinsim reiks pakeisti į 0
+    public static int currentlyAlive = 3;   //pradžioje yra trys gyvi, kai juos ištrinsim reiks pakeisti į 0
     public Text leftForLevel;
     bool isSpawning = false;
     public float minTime = 3.0f;
@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         Vector3 V_flaying = new Vector3(transform.position.x, Random.Range(2.5f, 5f));
         //   Random randomSp = new Random();
 
-        int i = Random.Range(1,3);//parenka prieša
+        int i = Random.Range(1,4);//parenka prieša
         Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
         switch (i)
         {

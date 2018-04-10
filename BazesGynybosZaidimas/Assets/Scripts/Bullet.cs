@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    int destroyTime = 2;
+    public int destroyTime = 2;
     void Update()
     {
         

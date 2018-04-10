@@ -27,13 +27,11 @@ public class shopMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         checkLevel();
 
         if (levelClear == true)

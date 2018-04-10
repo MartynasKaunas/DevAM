@@ -45,8 +45,8 @@ public class Ending : MonoBehaviour {
             {
                 
                 //iš naujo pradedant žaidimą reikia visus statsus gražint į pradines reikšmes, gal yra kažkoks lengvesnis būdas
-                Player.player_HP = 3;
-                Player.current_player_HP = 3;
+                Player.player_HP = 5;
+                Player.current_player_HP = 5;
                 Player.current_player_MP = 50;
                 Player.player_MP = 100;
                 Player.maxBulletCount = 20;
