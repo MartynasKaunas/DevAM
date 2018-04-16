@@ -34,6 +34,13 @@ public class Enemy : MonoBehaviour {
 			curent_enemy_hp -= 5;
 			Destroy(GameObject.FindGameObjectWithTag ("Trap"));
 		}
+        if(col.gameObject.tag == "DeletionWall")
+        {
+            Destroy(gameObject);
+            Spawner.currentlyAlive--;
+            if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
+                FindObjectOfType<Ending>().NextLevel();
+        }
     }
 
     void HealthBar() {
@@ -46,12 +53,6 @@ public class Enemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update(){
-
-        //float move = Input.GetAxis("Horizontal");
-
-        Debug.Log(enemySpeed);
-
-        //float move = 2.0f;
 
         anim.SetFloat("speed", enemySpeed);
         HealthBar();
