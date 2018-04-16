@@ -62,7 +62,9 @@ public class Spawner : MonoBehaviour
         }
         TrackLevel();
 
-        //For tessting only
+        Debug.Log(leftToSpawn + " " + currentlyAlive);
+
+        //For testing only
         if (Input.GetKey("l"))
             LevelUpSpawner();
     }
