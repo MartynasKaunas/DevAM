@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour {
 	}
 
     public void Recoil(){
-        transform.Translate(Vector2.left * Time.deltaTime * 15);
+        transform.Translate(Vector2.left * Time.deltaTime * 10);
         enemySpeed = 1;
     }
 
