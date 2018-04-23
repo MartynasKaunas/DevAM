@@ -14,6 +14,8 @@ public class shopMenu : MonoBehaviour
     public GameObject UpgradeAmmoUI;
     public GameObject BuyShotgunUI;
     public GameObject BuyCannonUI;
+    public GameObject BuyTrapUI;
+    public GameObject CurrentWeaponUI;
     public Text weaponDamage;
     public Text scoreCount;
     public Text maxHealth;
@@ -23,6 +25,7 @@ public class shopMenu : MonoBehaviour
     public static bool shotgunBought = false;
     public static bool cannonBought = false;
 
+    public int currentlyOpen = 0;
     int temp_currentLevel = 1;
     // Use this for initialization
     void Start()
@@ -57,24 +60,12 @@ public class shopMenu : MonoBehaviour
             allUI.SetActive(false);
             Time.timeScale = 0f;
             Destroy(GameObject.Find("Projectile(Clone)"));
-            healUI.SetActive(true);
-            UpgradeDmgUI.SetActive(true);
-            UpgradeHpUI.SetActive(true);
-            UpgradeAmmoUI.SetActive(true);
-
-            if (shotgunBought == true || cannonBought == true)
-            {
-                BuyShotgunUI.SetActive(false);
-                BuyCannonUI.SetActive(false);
-            }
-            else BuyShotgunUI.SetActive(true);
-
-            if (cannonBought == true || shotgunBought == true)
-            {
-                BuyShotgunUI.SetActive(false);
-                BuyCannonUI.SetActive(false);
-            }
-            else BuyCannonUI.SetActive(true);
+            if (currentlyOpen == 0)
+                openWeapons(true);
+            if (currentlyOpen == 1)
+                openCharStuf(true);
+            if (currentlyOpen == 2)
+                openWallStuf(true);
 
             DamageText();
             CurrentHealthText();
@@ -83,6 +74,63 @@ public class shopMenu : MonoBehaviour
             ScoreText();
 
         }
+    }
+
+    public void changeCurrentlyOpen(int i)
+    {
+        currentlyOpen = i;
+    }
+
+    public void openCharStuf(bool open)
+    {
+        if (open)
+        {
+            openWallStuf(false);
+            openWeapons(false);
+        }
+
+        UpgradeHpUI.SetActive(open);
+        healUI.SetActive(open);
+    }
+
+    public void openWallStuf(bool open)
+    {
+        if (open)
+        {
+            openWeapons(false);
+            openCharStuf(false);
+        }
+
+        BuyTrapUI.SetActive(open);
+    }
+
+    public void openWeapons(bool open)
+    {
+        CurrentWeaponUI.SetActive(open);
+
+        if (open)
+        {
+            openCharStuf(false);
+            openWallStuf(false);
+        }
+        UpgradeDmgUI.SetActive(open);
+        UpgradeAmmoUI.SetActive(open);
+
+        if (shotgunBought == true || cannonBought == true)
+        {
+            BuyShotgunUI.SetActive(false);
+            BuyCannonUI.SetActive(false);
+        }
+        else BuyShotgunUI.SetActive(open);
+
+        if (cannonBought == true || shotgunBought == true)
+        {
+            BuyShotgunUI.SetActive(false);
+            BuyCannonUI.SetActive(false);
+        }
+        else BuyCannonUI.SetActive(open);
+
+
     }
 
     void checkLevel()  //tikrina ar lygis pereitas
