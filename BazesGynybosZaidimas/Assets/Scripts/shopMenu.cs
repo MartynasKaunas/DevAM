@@ -15,6 +15,8 @@ public class shopMenu : MonoBehaviour
     public GameObject BuyShotgunUI;
     public GameObject BuyCannonUI;
     public GameObject BuyTrapUI;
+    public GameObject BuyWallUI;//siena
+    public GameObject BuyWallUpgradeUI;//siena upgrade
     public GameObject CurrentWeaponUI;
     public Text weaponDamage;
     public Text scoreCount;
@@ -90,6 +92,7 @@ public class shopMenu : MonoBehaviour
         }
 
         UpgradeHpUI.SetActive(open);
+        
         healUI.SetActive(open);
     }
 
@@ -100,8 +103,10 @@ public class shopMenu : MonoBehaviour
             openWeapons(false);
             openCharStuf(false);
         }
-
         BuyTrapUI.SetActive(open);
+        
+        BuyWallUI.SetActive(open);
+        BuyWallUpgradeUI.SetActive(open);
     }
 
     public void openWeapons(bool open)
@@ -155,6 +160,7 @@ public class shopMenu : MonoBehaviour
         }
     }
 
+   
     public void BuyCannon()
     {
         if (Player.score > 100)
