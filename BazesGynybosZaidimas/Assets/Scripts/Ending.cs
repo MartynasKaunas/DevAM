@@ -39,7 +39,7 @@ public class Ending : MonoBehaviour {
     void Update()
     {
 
-        if (Input.GetKey("escape"))
+        if (Input.GetKeyDown("escape"))
         {
             if (GameOver == true)
             {
@@ -70,7 +70,7 @@ public class Ending : MonoBehaviour {
             }
             else Application.Quit();
         }         
-        if (Input.GetKey("p"))
+        if (Input.GetKeyDown("p"))
             Freeze();
     }
 }
