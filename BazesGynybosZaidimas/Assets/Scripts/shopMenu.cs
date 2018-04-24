@@ -92,7 +92,6 @@ public class shopMenu : MonoBehaviour
         }
 
         UpgradeHpUI.SetActive(open);
-        
         healUI.SetActive(open);
     }
 

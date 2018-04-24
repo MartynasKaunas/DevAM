@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114510617157977126}
   - component: {fileID: 61004546145766910}
   m_Layer: 8
-  m_Name: Wall
+  m_Name: wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  current_wall_HP: 3
-  HP: 3
   HP1: {fileID: 114495984616111748}
   WallUI: {fileID: 0}
 --- !u!114 &114545107780251990

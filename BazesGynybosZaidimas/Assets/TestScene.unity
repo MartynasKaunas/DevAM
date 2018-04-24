@@ -3053,8 +3053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  current_wall_HP: 3
-  HP: 3
   HP1: {fileID: 0}
   WallUI: {fileID: 3404063}
 --- !u!1 &701936432
@@ -3604,7 +3602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &824191432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7053,6 +7051,7 @@ MonoBehaviour:
   BuyCannonUI: {fileID: 71537508}
   BuyTrapUI: {fileID: 1644023753}
   BuyWallUI: {fileID: 293031974}
+  BuyWallUpgradeUI: {fileID: 0}
   CurrentWeaponUI: {fileID: 651257404}
   weaponDamage: {fileID: 1138862782}
   scoreCount: {fileID: 1683133682}
@@ -7142,7 +7141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1885274831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7402,7 +7401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2046089685
 RectTransform:
   m_ObjectHideFlags: 0
