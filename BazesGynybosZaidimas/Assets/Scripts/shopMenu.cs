@@ -103,8 +103,8 @@ public class shopMenu : MonoBehaviour
             openWeapons(false);
             openCharStuf(false);
         }
+
         BuyTrapUI.SetActive(open);
-        
         BuyWallUI.SetActive(open);
         BuyWallUpgradeUI.SetActive(open);
     }
@@ -118,6 +118,7 @@ public class shopMenu : MonoBehaviour
             openCharStuf(false);
             openWallStuf(false);
         }
+
         UpgradeDmgUI.SetActive(open);
         UpgradeAmmoUI.SetActive(open);
 
