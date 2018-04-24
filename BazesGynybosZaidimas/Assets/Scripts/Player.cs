@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     public float MPRegenDelay = 1f;
 
-    public static int score = 1000000;
+    public static int score = 500;
     public Text scoreLine;
 
     public Text bulletsText;

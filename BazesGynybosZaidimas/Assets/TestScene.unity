@@ -7051,7 +7051,7 @@ MonoBehaviour:
   BuyCannonUI: {fileID: 71537508}
   BuyTrapUI: {fileID: 1644023753}
   BuyWallUI: {fileID: 293031974}
-  BuyWallUpgradeUI: {fileID: 0}
+  BuyWallUpgradeUI: {fileID: 2100297042}
   CurrentWeaponUI: {fileID: 651257404}
   weaponDamage: {fileID: 1138862782}
   scoreCount: {fileID: 1683133682}
