@@ -15,7 +15,8 @@ public class Taikymasis : MonoBehaviour {
     public static float speed = 50;     //Sviedinio greitis. Žiauriai priklauso ir nuo sviedinio masės Prefabs >> Projectile >> Rigidbody2D >> Mass
     public static int weaponType = 1;   //1 - pradinis ginklas, 2 - shotgun'as, 3 - didelė patranka
     private Rigidbody2D rb;
-
+	public bool readyToShoot = true;
+	public int shot = 0;
     public static float fireRate = 0.5f;
     float nextFire;
 
@@ -25,6 +26,9 @@ public class Taikymasis : MonoBehaviour {
 
         Vector2 exitPoint = new Vector2(exit_Point.transform.position.x, exit_Point.transform.position.y);
         Vector2 particleExitPoint = new Vector2(exit_Point.transform.position.x - 1, exit_Point.transform.position.y);
+		if (shot == 1) {
+			shot = 0;
+		}
 
         if (Input.GetButtonDown("Fire1") && Player.magazineEmpty == false && Time.time > nextFire) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
         {
@@ -103,9 +107,40 @@ public class Taikymasis : MonoBehaviour {
 
                     Player.bulletCount -= 1;
                     break;
+
+
             }               
         }
-    }
+		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false) {
+
+			Vector2 targetC = Camera.main.ScreenToWorldPoint (new Vector2 (Input.mousePosition.x, Input.mousePosition.y));
+
+			Vector2 directionC = targetC - exitPoint;
+			Quaternion rotationC = Quaternion.Euler (0, 0, Mathf.Atan2 (directionC.y, directionC.x) * Mathf.Rad2Deg);
+			transform.rotation = rotationC;
+
+			directionC.Normalize ();
+
+			GameObject shotC = (GameObject)Instantiate (projectilePrefab, exitPoint, rotationC);
+			rb = shotC.GetComponent<Rigidbody2D> ();
+			rb.AddForce (directionC * speed);
+			StartCoroutine (ShootDelayAR ());
+			Instantiate (basicShotParticle, particleExitPoint, rotationC);      
+
+			Player.bulletCount -= 1;
+
+
+
+
+
+
+		}
+	}
+	IEnumerator ShootDelayAR()
+	{
+		yield return new WaitForSeconds (0.5f);
+
+	}
 
     //Bokštelio vamzdis sukasi pelės kryptimi
     void Rotate()

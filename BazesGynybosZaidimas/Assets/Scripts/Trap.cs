@@ -16,6 +16,7 @@ public class Trap : MonoBehaviour {
 	}
 	public void placeTraps()
 	{
+		
 		Instantiate (prefab, new Vector3(0,0,0), Quaternion.identity);
 		Instantiate (prefab, new Vector3(0,-1,0), Quaternion.identity);
 		Instantiate (prefab, new Vector3(0,-3,0), Quaternion.identity);

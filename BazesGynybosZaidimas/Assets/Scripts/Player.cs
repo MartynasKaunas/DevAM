@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public bool invincible = false;
     public bool regeningMP = false;
 
-    public float MPRegenDelay = 1f;
+	public static float MPRegenDelay = 1f;
 
     public static int score = 500;
     public Text scoreLine;
@@ -114,14 +114,14 @@ public class Player : MonoBehaviour
 
 	IEnumerator reloadPistol()
 	{		
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(reloadWaitFor);
 		magazineEmpty = false;
 		bulletCount = maxBulletCount;
 
 
 	}
 	public float cur_reload =0;
-	public float s_reload = 1;
+	public static float s_reload = 1;
 
 	IEnumerator LoadingReload()
 	{
@@ -131,6 +131,7 @@ public class Player : MonoBehaviour
 		}
 		cur_reload = 0;
 	}
+	public static float reloadWaitFor = 1f;
 
     IEnumerator RegenerateMana()
     {

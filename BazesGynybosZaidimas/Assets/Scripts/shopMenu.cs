@@ -18,6 +18,9 @@ public class shopMenu : MonoBehaviour
     public GameObject BuyWallUI;//siena
     public GameObject BuyWallUpgradeUI;//siena upgrade
     public GameObject CurrentWeaponUI;
+	public GameObject UpgradeReloadUI;
+	public GameObject ManaRegenSpeedUI;
+	public GameObject BuyArUI;
     public Text weaponDamage;
     public Text scoreCount;
     public Text maxHealth;
@@ -26,6 +29,7 @@ public class shopMenu : MonoBehaviour
 
     public static bool shotgunBought = false;
     public static bool cannonBought = false;
+	public static bool ArBought = false;
 
     public int currentlyOpen = 0;
     int temp_currentLevel = 1;
@@ -93,6 +97,8 @@ public class shopMenu : MonoBehaviour
 
         UpgradeHpUI.SetActive(open);
         healUI.SetActive(open);
+		UpgradeReloadUI.SetActive (open);
+		ManaRegenSpeedUI.SetActive (open);
     }
 
     public void openWallStuf(bool open)
@@ -121,10 +127,11 @@ public class shopMenu : MonoBehaviour
         UpgradeDmgUI.SetActive(open);
         UpgradeAmmoUI.SetActive(open);
 
-        if (shotgunBought == true || cannonBought == true)
+		if (shotgunBought == true || cannonBought == true || ArBought == true)
         {
             BuyShotgunUI.SetActive(false);
             BuyCannonUI.SetActive(false);
+			BuyArUI.SetActive (false);
         }
         else BuyShotgunUI.SetActive(open);
 
@@ -132,8 +139,17 @@ public class shopMenu : MonoBehaviour
         {
             BuyShotgunUI.SetActive(false);
             BuyCannonUI.SetActive(false);
+			BuyArUI.SetActive (false);
         }
         else BuyCannonUI.SetActive(open);
+
+		if (cannonBought == true || shotgunBought == true || ArBought == true)
+		{
+			BuyShotgunUI.SetActive(false);
+			BuyCannonUI.SetActive(false);
+			BuyArUI.SetActive (false);
+		}
+		else BuyArUI.SetActive(open);
 
 
     }
@@ -172,6 +188,17 @@ public class shopMenu : MonoBehaviour
             Player.score -= 100;
         }
     }
+	public void BuyAR()
+	{
+		if (Player.score > 100)
+		{
+			Taikymasis.weaponType = 4;
+			Taikymasis.speed = 30;
+			ArBought = true;
+			BuyArUI.SetActive(false);
+			Player.score -= 100;
+		}
+	}
 
     public void Heal()
     {
@@ -207,6 +234,14 @@ public class shopMenu : MonoBehaviour
             Player.score -= 20;
         }
     }
+	public void ReloadTimeUpgrade()
+	{
+		if (Player.score > 25 && Player.reloadWaitFor >= 0.2) {
+			Player.s_reload -= 0.2f;
+			Player.reloadWaitFor -= 0.2f;
+			Player.score -= 25;
+		}
+	}
 
     public void UpgradeAmmo()
     {
@@ -217,6 +252,15 @@ public class shopMenu : MonoBehaviour
             Player.score -= 3;
         }
     }
+	public void UpgradeManaRegen()
+	{
+		if (Player.score > 50 && Player.MPRegenDelay >= 0.1) {
+			Player.MPRegenDelay -= 0.1f;
+			Player.score -= 50;
+
+		}
+
+	}
 
     void DamageText()
     {
