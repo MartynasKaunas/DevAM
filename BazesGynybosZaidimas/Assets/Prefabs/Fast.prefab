@@ -245,7 +245,7 @@ MonoBehaviour:
   enemySpeed: 10
   curent_enemy_hp: 1
   enemy_HP: 1
-  scoreValue: 17
+  scoreValue: 5
   HP: {fileID: 114472113813753196}
 --- !u!212 &212820886972681648
 SpriteRenderer:

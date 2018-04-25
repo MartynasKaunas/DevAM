@@ -111,9 +111,11 @@ public class Taikymasis : MonoBehaviour {
 
             }               
         }
-		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false) {
+		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false && Time.time > nextFire) {
 
-			Vector2 targetC = Camera.main.ScreenToWorldPoint (new Vector2 (Input.mousePosition.x, Input.mousePosition.y));
+            nextFire = Time.time + fireRate / 3;
+
+            Vector2 targetC = Camera.main.ScreenToWorldPoint (new Vector2 (Input.mousePosition.x, Input.mousePosition.y));
 
 			Vector2 directionC = targetC - exitPoint;
 			Quaternion rotationC = Quaternion.Euler (0, 0, Mathf.Atan2 (directionC.y, directionC.x) * Mathf.Rad2Deg);
@@ -123,17 +125,13 @@ public class Taikymasis : MonoBehaviour {
 
 			GameObject shotC = (GameObject)Instantiate (projectilePrefab, exitPoint, rotationC);
 			rb = shotC.GetComponent<Rigidbody2D> ();
-			rb.AddForce (directionC * speed);
-			StartCoroutine (ShootDelayAR ());
+			rb.AddForce (directionC * speed * 4);
+
+			//StartCoroutine (ShootDelayAR ());
+
 			Instantiate (basicShotParticle, particleExitPoint, rotationC);      
 
 			Player.bulletCount -= 1;
-
-
-
-
-
-
 		}
 	}
 	IEnumerator ShootDelayAR()

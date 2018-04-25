@@ -175,7 +175,7 @@ MonoBehaviour:
   enemySpeed: 1
   curent_enemy_hp: 10
   enemy_HP: 10
-  scoreValue: 17
+  scoreValue: 10
   HP: {fileID: 114928243193893764}
 --- !u!114 &114748088557048274
 MonoBehaviour:

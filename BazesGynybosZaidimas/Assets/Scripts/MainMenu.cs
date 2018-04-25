@@ -16,10 +16,10 @@ public class MainMenu : MonoBehaviour {
     public Text HelpText;
     public static string pagalba = "Jūs valdote bokštelį su patranka." + Environment.NewLine +
                         "Jūsų tikslas - kuo ilgiau išgyventi, pereiti kuo daugiau lygių ir surinkti kuo daugiau taškų." + Environment.NewLine +
-                        "Bokštelio taikymasis valdomas pele, šaudoma kairiuoju pelės mygtuku " + Environment.NewLine + 
-                        "Šovinių kiekis ribotas. Šoviniams pasibaigus spauskite R raidę, kad iš naujo užtaisytumėte ginklą " + Environment.NewLine +
-                        "Turite maną, kurią, paspaudę Q raidę, galite naudoti specialiam sustiprinančiam gebėjimui " + Environment.NewLine +
-                        "Tarp lygių parduotuvėje už surinktus taškus galite pirkti naujus ginklus arba tobulinti jau turimą" + Environment.NewLine +
+                        "Bokštelio taikymasis valdomas pele, šaudoma kairiuoju pelės mygtuku. " + Environment.NewLine + 
+                        "Šovinių kiekis ribotas. Šoviniams pasibaigus spauskite R raidę, kad iš naujo užtaisytumėte ginklą. " + Environment.NewLine +
+                        "Turite maną, kurią, paspaudę Q raidę, galite naudoti specialiam sustiprinančiam gebėjimui. " + Environment.NewLine +
+                        "Tarp lygių parduotuvėje už surinktus taškus galite pirkti naujus ginklus arba tobulinti jau turimą." + Environment.NewLine +
                         "  " + Environment.NewLine +
                         "Sėkmės" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
 

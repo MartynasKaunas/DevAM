@@ -89,11 +89,13 @@ public class Player : MonoBehaviour
 
     public void TrackBullets()
     {
+        bulletsText.text = "Bullets: " + bulletCount;
         if (bulletCount <= 0)
         {
             magazineEmpty = true;
+            bulletsText.text = "press R to reload";
         }
-        bulletsText.text = "BulletsLeft: " + bulletCount;
+        
     }
 
     public void TrackScore()
