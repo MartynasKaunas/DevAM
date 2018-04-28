@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     public bool invincible = false;
     public bool regeningMP = false;
 
-	public static float MPRegenDelay = 1f;
+    public static float MPRegenDelay = 1f;
 
-    public static int score = 500;
+    public static int score = 300;
     public Text scoreLine;
 
     public Text bulletsText;
@@ -25,7 +25,13 @@ public class Player : MonoBehaviour
 
     public static bool magazineEmpty = false;
 
-	public Image reloadAnim;
+    public GameObject smokeParticle;
+    public GameObject smokeOrigin1;
+    public GameObject smokeOrigin2;
+    public static bool smoke1 = false;
+    public static bool smoke2 = false;
+
+    public Image reloadAnim;
     public Image HP;
     public Image MP;
     public Text HP_count;
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour
     void HealthBar()
     {
         HP.fillAmount = current_player_HP / player_HP;
-        HP_count.text = current_player_HP.ToString();      
+        HP_count.text = current_player_HP.ToString();
     }
 
     void ManaBar()
@@ -70,12 +76,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         HealthBar();
+        SmokeParticles();
         ManaBar();
         TrackScore();
         IsDead();
         TrackBullets();
         Reload();
-		reloadAnim.fillAmount = cur_reload;
+        reloadAnim.fillAmount = cur_reload;
     }
 
     void IsDead()
@@ -95,7 +102,7 @@ public class Player : MonoBehaviour
             magazineEmpty = true;
             bulletsText.text = "press R to reload";
         }
-        
+
     }
 
     public void TrackScore()
@@ -103,37 +110,38 @@ public class Player : MonoBehaviour
         scoreLine.text = "score : " + score;
     }
 
-	public void Reload()
-	{
-		if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
-		{
-			
-			StartCoroutine (LoadingReload ());
-			StartCoroutine (reloadPistol());
+    public void Reload()
+    {
+        if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
+        {
 
-		}
-	}
+            StartCoroutine(LoadingReload());
+            StartCoroutine(reloadPistol());
 
-	IEnumerator reloadPistol()
-	{		
-		yield return new WaitForSeconds(reloadWaitFor);
-		magazineEmpty = false;
-		bulletCount = maxBulletCount;
+        }
+    }
+
+    IEnumerator reloadPistol()
+    {
+        yield return new WaitForSeconds(reloadWaitFor);
+        magazineEmpty = false;
+        bulletCount = maxBulletCount;
 
 
-	}
-	public float cur_reload =0;
-	public static float s_reload = 1;
+    }
+    public float cur_reload = 0;
+    public static float s_reload = 1;
 
-	IEnumerator LoadingReload()
-	{
-		while (cur_reload <= s_reload) {
-			cur_reload += 0.1f;		
-			yield return new WaitForSeconds (0.08f);
-		}
-		cur_reload = 0;
-	}
-	public static float reloadWaitFor = 1f;
+    IEnumerator LoadingReload()
+    {
+        while (cur_reload <= s_reload)
+        {
+            cur_reload += 0.1f;
+            yield return new WaitForSeconds(0.08f);
+        }
+        cur_reload = 0;
+    }
+    public static float reloadWaitFor = 1f;
 
     IEnumerator RegenerateMana()
     {
@@ -148,6 +156,20 @@ public class Player : MonoBehaviour
             {
                 yield return null;
             }
+        }
+    }
+
+    public void SmokeParticles()
+    {
+        if (Player.current_player_HP <= Player.player_HP * 2 / 3 && smoke1 == false)
+        {
+            Instantiate(smokeParticle, smokeOrigin1.transform.position, smokeOrigin1.transform.rotation);
+            smoke1 = true;
+        }
+        if (current_player_HP <= player_HP * 1 / 3 && smoke2 == false)
+        {
+            Instantiate(smokeParticle, smokeOrigin2.transform.position, smokeOrigin2.transform.rotation);
+            smoke2 = true;
         }
     }
 }
