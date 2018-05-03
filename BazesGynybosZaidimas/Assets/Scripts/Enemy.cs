@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour {
 		{
 			curent_enemy_hp -= 5;
 			Destroy(GameObject.FindGameObjectWithTag ("Trap"));
+			Trap.usedTraps += 1;
 		}
         if(col.gameObject.tag == "DeletionWall")
         {
