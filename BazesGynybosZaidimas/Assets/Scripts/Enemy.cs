@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour {
     public int scoreValue = 17;
     public static string name = "enemy";
     public static int count_deaths_this_enemy;
+    public static bool attacking = false;
     public Image HP;
 
 
@@ -27,6 +28,9 @@ public class Enemy : MonoBehaviour {
         }
         if (col.gameObject.tag == "Player" || col.gameObject.tag== "Wall")
         {
+           
+            attacking = true;
+            anim.SetBool("attacking", attacking);
             Recoil();
         }
 		if(col.gameObject.tag == "Trap")
@@ -54,7 +58,7 @@ public class Enemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update(){
-
+   anim.SetBool("attacking", attacking);
         anim.SetFloat("speed", enemySpeed);
         HealthBar();
         IsDead();
