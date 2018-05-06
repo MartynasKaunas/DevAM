@@ -78,12 +78,16 @@ public class Enemy : MonoBehaviour {
     {
         if (curent_enemy_hp <= 0)
         {
-            count_deaths_this_enemy++;
+            if (Spawner.level%10!=0)
+            {
+  Spawner.currentlyAlive--;
+            }
+           count_deaths_this_enemy++;
             Player.score += scoreValue;
             anim.SetBool("death", true);
             float a = 5f;
             Destroy(gameObject);
-            Spawner.currentlyAlive--;
+           
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
                 FindObjectOfType<Ending>().NextLevel();
         }
