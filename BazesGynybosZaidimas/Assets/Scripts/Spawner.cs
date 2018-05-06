@@ -28,6 +28,10 @@ public class Spawner : MonoBehaviour
     public float flyingSpeedBuff = 0;
     public int flyingHPBuff = 0;
 
+    public GameObject enemyPrefabBoss;   //Bossas
+
+    public int BossHPBuff = 0;
+
     IEnumerator SpawnObject(float seconds)
     {
         //    Debug.Log("Waiting for " + seconds + " seconds");
@@ -41,37 +45,51 @@ public class Spawner : MonoBehaviour
 
         int i = Random.Range(1, 4);//parenka prieša
                                    //     Debug.Log("iiiiiiiiiiiiiiiiii" + i + " seconds");//test
-        switch (i)
+
+        if (level % 10 == 0)
         {
-            case 1:
-                GameObject enemySlow = (GameObject)Instantiate(enemyPrefab, V, transform.rotation);
-                Enemy e1 = enemySlow.GetComponent<Enemy>();
-                e1.enemySpeed += slowSpeedBuff;
-                e1.enemy_HP += slowHPBuff;
-                e1.curent_enemy_hp += slowHPBuff;
-
-                break;
-            case 2:
-                GameObject enemyFast = Instantiate(enemyPrefab1, V, transform.rotation);
-                Enemy e2 = enemyFast.GetComponent<Enemy>();
-                e2.enemySpeed += fastSpeedBuff;
-                e2.enemy_HP += fastHPBuff;
-                e2.curent_enemy_hp += slowHPBuff;
-                break;
-            case 3:
-                GameObject enemyFlying = Instantiate(enemyPrefab2, V_flaying, transform.rotation);
-                Enemy e3 = enemyFlying.GetComponent<Enemy>();
-                e3.enemySpeed += flyingSpeedBuff;
-                e3.enemy_HP += flyingHPBuff;
-                e3.curent_enemy_hp += slowHPBuff;
-                break;
+            Vector3 V_Boss = new Vector3(-12,1,0);
+            GameObject enemyBoss = Instantiate(enemyPrefabBoss, V_Boss, transform.rotation);
+            BossAbility B = enemyBoss.GetComponent<BossAbility>();
+            B.enemy_HP += BossHPBuff*level/2;
+            B.curent_enemy_hp += BossHPBuff*level/2;
+            leftToSpawn = 0;//one less enemy left
+            currentlyAlive++;
         }
+        else
+        {
+            switch (i)
+            {
+                case 1:
+                    GameObject enemySlow = (GameObject)Instantiate(enemyPrefab, V, transform.rotation);
+                    Enemy e1 = enemySlow.GetComponent<Enemy>();
+                    e1.enemySpeed += slowSpeedBuff;
+                    e1.enemy_HP += slowHPBuff;
+                    e1.curent_enemy_hp += slowHPBuff;
+
+                    break;
+                case 2:
+                    GameObject enemyFast = Instantiate(enemyPrefab1, V, transform.rotation);
+                    Enemy e2 = enemyFast.GetComponent<Enemy>();
+                    e2.enemySpeed += fastSpeedBuff;
+                    e2.enemy_HP += fastHPBuff;
+                    e2.curent_enemy_hp += fastHPBuff;
+                    break;
+                case 3:
+                    GameObject enemyFlying = Instantiate(enemyPrefab2, V_flaying, transform.rotation);
+                    Enemy e3 = enemyFlying.GetComponent<Enemy>();
+                    e3.enemySpeed += flyingSpeedBuff;
+                    e3.enemy_HP += flyingHPBuff;
+                    e3.curent_enemy_hp += flyingHPBuff;
+                    break;
+            }
 
 
 
-        leftToSpawn--;//one less enemy left
-        currentlyAlive++;
-        //We've spawned, so now we could start another spawn     
+            leftToSpawn--;//one less enemy left
+            currentlyAlive++;
+            //We've spawned, so now we could start another spawn     
+        }
         isSpawning = false;
 
     }
@@ -106,11 +124,12 @@ public class Spawner : MonoBehaviour
         minTime = minTime * 0.9f;
         maxTime = maxTime * 0.9f;
 
-        slowHPBuff = 2;
+        slowHPBuff = 2;// upgreidina enemy
         slowSpeedBuff = 0.5f;
         fastHPBuff = 1;
         fastSpeedBuff = 1;
         flyingHPBuff = 1;
         flyingSpeedBuff = 0.5f;
+        BossHPBuff = 100;
     }
 }

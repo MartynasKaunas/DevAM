@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Boss fight
+  m_Name: Boss attack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,33 +20,33 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: f29b3f34868156e41b084435ac435d8b, type: 3}
-    - time: 0.1
+    - time: 0.06666667
       value: {fileID: 21300000, guid: 5fb2f223a5040ba448181ceea7797735, type: 3}
-    - time: 0.2
+    - time: 0.13333334
       value: {fileID: 21300000, guid: d79e08e9ba9d7dd488ca74b6f66c3e8f, type: 3}
-    - time: 0.3
+    - time: 0.2
       value: {fileID: 21300000, guid: 643465baede680344ac4c3ccee1d6399, type: 3}
-    - time: 0.4
+    - time: 0.26666668
       value: {fileID: 21300000, guid: 52dc27cde23533f489a778ef8658e669, type: 3}
-    - time: 0.5
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 0d5abcf7c2577b140b51777213533ea4, type: 3}
-    - time: 0.6
+    - time: 0.4
       value: {fileID: 21300000, guid: 3897f195fdbc4434b846418ba13142f1, type: 3}
-    - time: 0.7
+    - time: 0.46666667
       value: {fileID: 21300000, guid: 3575cd16ce039854b98408cd6c31dea1, type: 3}
-    - time: 0.8
+    - time: 0.53333336
       value: {fileID: 21300000, guid: ba7af0dc211c4ff4592fc31760f3c1c5, type: 3}
-    - time: 0.9
+    - time: 0.6
       value: {fileID: 21300000, guid: ad6709ab16c26cb4bbb42510c84389d8, type: 3}
-    - time: 1
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 5f4fbfd284146584cac86f2fdc9e177f, type: 3}
-    - time: 1.1
+    - time: 0.73333335
       value: {fileID: 21300000, guid: f166dc3c050e2984186dd0a5d88f5032, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 10
+  m_SampleRate: 15
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -78,7 +78,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
