@@ -26,6 +26,7 @@ public class shopMenu : MonoBehaviour
     public Text maxHealth;
     public Text currentHealth;
     public Text maxAmmo;
+    
 
     public static bool shotgunBought = false;
     public static bool cannonBought = false;
@@ -94,6 +95,8 @@ public class shopMenu : MonoBehaviour
             openWallStuf(false);
             openWeapons(false);
         }
+
+        
 
         UpgradeHpUI.SetActive(open);
         healUI.SetActive(open);
