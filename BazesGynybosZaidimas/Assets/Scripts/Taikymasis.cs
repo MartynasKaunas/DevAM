@@ -8,6 +8,11 @@ public class Taikymasis : MonoBehaviour {
     public GameObject cannonShotParticle;
     public GameObject shotgunShotParticle;
 
+    private AudioSource audioSource;
+    public AudioClip ShotSound;
+    private float volLowRange = .2f;
+    private float volHighRange = 1.5f;
+
     public float turnSpeed = 10f;       //bokštelio vamzdžio sukimosi greitis
 
     public GameObject projectilePrefab; //Skriptui priskirtas sviedinio prefab  
@@ -20,9 +25,15 @@ public class Taikymasis : MonoBehaviour {
     public static float fireRate = 0.5f;
     float nextFire;
 
-    void Update()
+    void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {       
         Rotate();
+        audioSource.pitch = Random.Range(volLowRange, volHighRange);
 
         Vector2 exitPoint = new Vector2(exit_Point.transform.position.x, exit_Point.transform.position.y);
         Vector2 particleExitPoint = new Vector2(exit_Point.transform.position.x - 1, exit_Point.transform.position.y);
@@ -32,6 +43,8 @@ public class Taikymasis : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1") && Player.magazineEmpty == false && Time.time > nextFire) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
         {
+            audioSource.PlayOneShot(ShotSound);
+
             nextFire = Time.time + fireRate;
             switch (weaponType)
             {
@@ -55,8 +68,8 @@ public class Taikymasis : MonoBehaviour {
                 case 2:
 
                     Vector2 target1 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-                    Vector2 target2 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y + 120));
-                    Vector2 target3 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y - 120));
+                    Vector2 target2 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y + 140));
+                    Vector2 target3 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y - 140));
 
                     Vector2 direction1 = target1 - exitPoint;
                     Vector2 direction2 = target2 - exitPoint;
@@ -76,9 +89,9 @@ public class Taikymasis : MonoBehaviour {
                     Rigidbody2D rb2 = shotUpper.GetComponent<Rigidbody2D>();
                     Rigidbody2D rb3 = shotLower.GetComponent<Rigidbody2D>();
 
-                    rb.AddForce(direction1 * speed);
-                    rb2.AddForce(direction2 * speed);
-                    rb3.AddForce(direction3 * speed);
+                    rb.AddForce(direction1 * (speed + 10));
+                    rb2.AddForce(direction2 * (speed + 10));
+                    rb3.AddForce(direction3 * (speed + 10));
 
                     Instantiate(shotgunShotParticle, particleExitPoint, rotation2);
 
@@ -98,9 +111,9 @@ public class Taikymasis : MonoBehaviour {
                     directionB.Normalize();
 
                     GameObject shotB = (GameObject)Instantiate(projectilePrefab, exitPoint, rotationB);
-                    shotB.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    shotB.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                     rb = shotB.GetComponent<Rigidbody2D>();              
-                    rb.AddForce(directionB * speed * 70);
+                    rb.AddForce(directionB * speed * 50);
                     rb.mass = 0.2f;
 
                     Instantiate(cannonShotParticle, particleExitPoint, rotationB);
@@ -113,6 +126,7 @@ public class Taikymasis : MonoBehaviour {
         }
 		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false && Time.time > nextFire) {
 
+            audioSource.PlayOneShot(ShotSound);
             nextFire = Time.time + fireRate / 3;
 
             Vector2 targetC = Camera.main.ScreenToWorldPoint (new Vector2 (Input.mousePosition.x, Input.mousePosition.y));

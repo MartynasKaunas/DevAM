@@ -37,7 +37,7 @@ public class Buff_1 : MonoBehaviour {
                 Taikymasis.speed *= speedBuffAmount;
                 Taikymasis.fireRate /= fireRateBuffAmount;
 
-                Debug.Log("original speed" + Taikymasis.speed);
+                //Debug.Log("original speed" + Taikymasis.speed);
 
                 Instantiate(buffParticle, particleSource.transform.position, particleSource.transform.rotation);
 

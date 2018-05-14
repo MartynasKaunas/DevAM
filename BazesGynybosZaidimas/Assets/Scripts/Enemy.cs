@@ -18,13 +18,24 @@ public class Enemy : MonoBehaviour {
     public Image HP;
     public float fanim = 10;         // del animacijos
 
+    private AudioSource audioSource;
+    public AudioClip DeathSound;
+    private float volLowRange = 1f;
+    private float volHighRange = 1.2f;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void OnCollisionEnter2D (Collision2D col)
     {
         if(col.gameObject.tag == "Bullet")
         {
 			curent_enemy_hp -= Player.weaponDamage;
-            Instantiate(damageTakenParticle, transform.position, transform.rotation);      
+            Instantiate(damageTakenParticle, transform.position, transform.rotation);
+            audioSource.pitch = Random.Range(volLowRange, volHighRange);
+            audioSource.PlayOneShot(DeathSound);
         }
         if (col.gameObject.tag == "Player" || col.gameObject.tag== "Wall")
         {
@@ -80,14 +91,13 @@ public class Enemy : MonoBehaviour {
         {
             if (Spawner.level%10!=0)
             {
-  Spawner.currentlyAlive--;
+                  Spawner.currentlyAlive--;
             }
-           count_deaths_this_enemy++;
+            count_deaths_this_enemy++;
             Player.score += scoreValue;
             anim.SetBool("death", true);
             float a = 5f;
             Destroy(gameObject);
-           
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
                 FindObjectOfType<Ending>().NextLevel();
         }
