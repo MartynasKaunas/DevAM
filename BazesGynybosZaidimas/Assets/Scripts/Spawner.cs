@@ -32,6 +32,18 @@ public class Spawner : MonoBehaviour
 
     public int BossHPBuff = 0;
 
+    public AudioClip levelMusic1;
+    public AudioClip levelMusic2;
+    public AudioClip levelMusic3;
+    private AudioSource audioSource;
+    public static int trackMusic = 1;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(levelMusic1);
+    }
+
     IEnumerator SpawnObject(float seconds)
     {
         //    Debug.Log("Waiting for " + seconds + " seconds");
@@ -105,11 +117,12 @@ public class Spawner : MonoBehaviour
         }
         TrackLevel();
 
-        //    Debug.Log(leftToSpawn + " " + currentlyAlive);
+        //Debug.Log(leftToSpawn + " " + currentlyAlive);
 
         //For testing only
         if (Input.GetKey("l"))
             LevelUpSpawner();
+        if (shopMenu.levelClear) audioSource.Stop();
     }
 
     public void TrackLevel()
@@ -124,12 +137,23 @@ public class Spawner : MonoBehaviour
         minTime = minTime * 0.9f;
         maxTime = maxTime * 0.9f;
 
-        slowHPBuff = 2;// upgreidina enemy
+        slowHPBuff = 2;
         slowSpeedBuff = 0.5f;
         fastHPBuff = 1;
         fastSpeedBuff = 1;
         flyingHPBuff = 1;
         flyingSpeedBuff = 0.5f;
         BossHPBuff = 100;
+    }
+
+    public void PlayMusic()
+    {
+        audioSource.Stop();
+        trackMusic++;
+        if (trackMusic > 6) trackMusic = 1;
+
+        else if (trackMusic == 1) { audioSource.PlayOneShot(levelMusic1); }
+        else if (trackMusic == 2) { audioSource.PlayOneShot(levelMusic2); }
+        else if (trackMusic == 3) { audioSource.PlayOneShot(levelMusic3); }
     }
 }

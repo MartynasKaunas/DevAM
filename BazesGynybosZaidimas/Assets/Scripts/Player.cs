@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     public Text HP_text;
 
     void Start()
-    {
+    {       
         StartCoroutine(RegenerateMana());
         MP_text.text = "MP";
         HP_text.text = "HP";

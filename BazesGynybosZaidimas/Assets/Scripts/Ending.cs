@@ -8,17 +8,23 @@ public class Ending : MonoBehaviour {
 
     public Text endReport;
     public static bool GameOver = false;
-    public void EndMePlz()
-    {
 
-        endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " Enemies";
-        GameOver = true;
-    }
+    public AudioClip GameOverMusic;
+    private AudioSource audioSource;
+
 
     // Use this for initialization
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         endReport.text = "";
+    }
+
+    public void EndMePlz()
+    {
+        audioSource.PlayOneShot(GameOverMusic);
+        endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " Enemies";
+        GameOver = true;
     }
 
     public void Freeze()

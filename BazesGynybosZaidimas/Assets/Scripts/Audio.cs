@@ -24,7 +24,7 @@ public class Audio : MonoBehaviour
      
         if (Ending.GameOver)
         {          
-            MusicSourceEnd.Play();
+            MusicSourceEnd.PlayOneShot(MusicClipEnd);
             //Ending.GameOver = false;
         }
 

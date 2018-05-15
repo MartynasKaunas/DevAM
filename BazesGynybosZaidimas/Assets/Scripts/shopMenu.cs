@@ -26,7 +26,10 @@ public class shopMenu : MonoBehaviour
     public Text maxHealth;
     public Text currentHealth;
     public Text maxAmmo;
-    
+
+    public AudioClip LevelClear;
+    private AudioSource audioSource;
+
 
     public static bool shotgunBought = false;
     public static bool cannonBought = false;
@@ -37,6 +40,8 @@ public class shopMenu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -45,7 +50,7 @@ public class shopMenu : MonoBehaviour
         checkLevel();
 
         if (levelClear == true)
-        {
+        {           
             Pause();
         }
     }
@@ -63,6 +68,7 @@ public class shopMenu : MonoBehaviour
     {
         if (levelClear == true)
         {
+            audioSource.PlayOneShot(LevelClear);
             shopMenuUI.SetActive(true);
             allUI.SetActive(false);
             Time.timeScale = 0f;
@@ -79,7 +85,6 @@ public class shopMenu : MonoBehaviour
             MaxHealthText();
             MaxAmmoText();
             ScoreText();
-
         }
     }
 
