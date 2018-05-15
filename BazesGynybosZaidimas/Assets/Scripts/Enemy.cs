@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour {
 
     private AudioSource audioSource;
     public AudioClip DeathSound;
+    public AudioClip AttackSound;
+
     private float volLowRange = 1f;
     private float volHighRange = 1.2f;
 
@@ -42,6 +44,9 @@ public class Enemy : MonoBehaviour {
             fanim = 1;
             anim.SetFloat("atk",fanim);
             Recoil();
+            audioSource.pitch = Random.Range(0.3f, 1f);
+            audioSource.volume = Random.Range(0.009f, 0.02f);
+            audioSource.PlayOneShot(AttackSound);
         }
 		if(col.gameObject.tag == "Trap")
 		{
@@ -96,8 +101,9 @@ public class Enemy : MonoBehaviour {
             count_deaths_this_enemy++;
             Player.score += scoreValue;
             anim.SetBool("death", true);
-            float a = 5f;
+
             Destroy(gameObject);
+
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
                 FindObjectOfType<Ending>().NextLevel();
         }

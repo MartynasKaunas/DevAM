@@ -10,6 +10,7 @@ public class Ending : MonoBehaviour {
     public static bool GameOver = false;
 
     public AudioClip GameOverMusic;
+    public AudioSource SpawnerAudioSource;
     private AudioSource audioSource;
 
 
@@ -22,6 +23,7 @@ public class Ending : MonoBehaviour {
 
     public void EndMePlz()
     {
+        SpawnerAudioSource.Stop();
         audioSource.PlayOneShot(GameOverMusic);
         endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " Enemies";
         GameOver = true;

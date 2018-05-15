@@ -1563,7 +1563,7 @@ MonoBehaviour:
   HP_count: {fileID: 481878815}
   MP_count: {fileID: 606991700}
   MP_text: {fileID: 1742595412}
-  HP_text: {fileID: 1742595412}
+  HP_text: {fileID: 2084547661}
   cur_reload: 0
 --- !u!212 &250388594
 SpriteRenderer:
@@ -4512,6 +4512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endReport: {fileID: 666667307}
   GameOverMusic: {fileID: 8300000, guid: 959d22297f4757447a49c9672753727f, type: 3}
+  SpawnerAudioSource: {fileID: 748484328}
 --- !u!114 &679400429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,7 +4848,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.02
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5177,7 +5178,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.03
+  m_Volume: 0.06
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5255,11 +5256,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4205007970275224, guid: 47cffc58602dea341bcb5261bd8b9537, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.35
+      value: -9.15
       objectReference: {fileID: 0}
     - target: {fileID: 4205007970275224, guid: 47cffc58602dea341bcb5261bd8b9537, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.27
+      value: -3.19
       objectReference: {fileID: 0}
     - target: {fileID: 4205007970275224, guid: 47cffc58602dea341bcb5261bd8b9537, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6080,11 +6081,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4518694498575116, guid: dfd17dd52126a2d4c870dc5cb772c934, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.45
+      value: -8.87
       objectReference: {fileID: 0}
     - target: {fileID: 4518694498575116, guid: dfd17dd52126a2d4c870dc5cb772c934, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.34
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4518694498575116, guid: dfd17dd52126a2d4c870dc5cb772c934, type: 2}
       propertyPath: m_LocalPosition.z
