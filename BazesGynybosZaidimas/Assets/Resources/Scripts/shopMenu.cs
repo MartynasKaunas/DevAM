@@ -209,6 +209,7 @@ public class shopMenu : MonoBehaviour
             Player.score -= 100;
         }
     }
+
 	public void BuyAR()
 	{
 		if (Player.score > 100)
@@ -271,6 +272,7 @@ public class shopMenu : MonoBehaviour
             Player.score -= 20;
         }
     }
+
 	public void ReloadTimeUpgrade()
 	{
 		if (Player.score > 25 && Player.reloadWaitFor >= 0.2) {
@@ -289,6 +291,7 @@ public class shopMenu : MonoBehaviour
             Player.score -= 3;
         }
     }
+
 	public void UpgradeManaRegen()
 	{
 		if (Player.score > 50 && Player.MPRegenDelay >= 0.1) {
@@ -296,7 +299,6 @@ public class shopMenu : MonoBehaviour
 			Player.score -= 50;
 
 		}
-
 	}
 
     void DamageText()

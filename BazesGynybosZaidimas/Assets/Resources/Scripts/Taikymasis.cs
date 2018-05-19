@@ -120,8 +120,6 @@ public class Taikymasis : MonoBehaviour {
 
                     Player.bulletCount -= 1;
                     break;
-
-
             }               
         }
 		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false && Time.time > nextFire) {
@@ -151,7 +149,6 @@ public class Taikymasis : MonoBehaviour {
 	IEnumerator ShootDelayAR()
 	{
 		yield return new WaitForSeconds (0.5f);
-
 	}
 
     //Bokštelio vamzdis sukasi pelės kryptimi

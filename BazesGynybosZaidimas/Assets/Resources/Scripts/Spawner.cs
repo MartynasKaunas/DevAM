@@ -96,8 +96,6 @@ public class Spawner : MonoBehaviour
                     break;
             }
 
-
-
             leftToSpawn--;//one less enemy left
             currentlyAlive++;
             //We've spawned, so now we could start another spawn     
@@ -137,17 +135,17 @@ public class Spawner : MonoBehaviour
 
     public void LevelUpSpawner()
     {
-        leftToSpawn = 2 + level++;
+        leftToSpawn = (Random.Range(1, 6) + level++*3);
         minTime = minTime * 0.9f;
         maxTime = maxTime * 0.9f;
 
-        slowHPBuff = 2;
-        slowSpeedBuff = 0.5f;
-        fastHPBuff = 1;
-        fastSpeedBuff = 1;
-        flyingHPBuff = 1;
-        flyingSpeedBuff = 0.5f;
-        BossHPBuff = 100;
+        slowHPBuff += 2;
+        slowSpeedBuff += 1f;
+        fastHPBuff += 1;
+        fastSpeedBuff += 1.5f;
+        flyingHPBuff += 2;
+        flyingSpeedBuff += 0.5f;
+        BossHPBuff += 100;
     }
 
     public void PlayMusic()

@@ -61,6 +61,7 @@ public class Ending : MonoBehaviour {
                 Player.bulletCount = 20;
                 Player.score = 0;
                 Taikymasis.weaponType = 1;
+                Taikymasis.speed = 45;
 
                 endReport.text = "";
                 shopMenu.levelClear = false;

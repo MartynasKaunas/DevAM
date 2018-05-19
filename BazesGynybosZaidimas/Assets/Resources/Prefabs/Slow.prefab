@@ -138,10 +138,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 15
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -284,8 +284,8 @@ MonoBehaviour:
   damageTakenParticle: {fileID: 1357259761295042, guid: 46b49313ae68f1741a647509635763b1,
     type: 2}
   enemySpeed: 1
-  curent_enemy_hp: 10
-  enemy_HP: 10
+  curent_enemy_hp: 8
+  enemy_HP: 8
   scoreValue: 10
   HP: {fileID: 114928243193893764}
   fanim: 10

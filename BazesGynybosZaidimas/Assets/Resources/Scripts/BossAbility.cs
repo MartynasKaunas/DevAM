@@ -113,9 +113,7 @@ public class BossAbility : MonoBehaviour
         {
             count_deaths_this_enemy++;
             Player.score += scoreValue;
-            // anim.SetBool("death", true);
-            float a = 5f;
-
+            //anim.SetBool("death", true);
 
             Destroy(gameObject);
             Spawner.currentlyAlive--;

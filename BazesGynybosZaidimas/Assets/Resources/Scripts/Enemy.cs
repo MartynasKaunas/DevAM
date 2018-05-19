@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour {
 
     void Start()
     {
+        anim = GetComponent<Animator>(); //animacija
+        anim.SetFloat("speed", enemySpeed);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -41,9 +43,7 @@ public class Enemy : MonoBehaviour {
         }
         if (col.gameObject.tag == "Player" || col.gameObject.tag== "Wall")
         {
-            fanim = 1;
-            anim.SetFloat("atk",fanim);
-            Recoil();
+            Recoil();                
             audioSource.pitch = Random.Range(0.3f, 1f);
             audioSource.volume = Random.Range(0.009f, 0.02f);
             audioSource.PlayOneShot(AttackSound);
@@ -66,15 +66,9 @@ public class Enemy : MonoBehaviour {
     void HealthBar() {
         HP.fillAmount = curent_enemy_hp / enemy_HP;
     }
-    void start() {
-      anim = GetComponent<Animator>(); //animacija
 
-
-    }
     // Update is called once per frame
-    void Update(){
-
-        anim.SetFloat("speed", enemySpeed);
+    void Update(){     
         HealthBar();
         IsDead();
 		Movement();
@@ -83,11 +77,22 @@ public class Enemy : MonoBehaviour {
 
 	public void Movement(){		
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);
-	}
+        if (Wall.current_wall_HP <= 0)
+        {
+            enemySpeed = 1.5f;
+            anim.SetFloat("speed", 2);
+        }
+    }
 
     public void Recoil(){
         transform.Translate(Vector2.left * Time.deltaTime * 10);
-        enemySpeed = 1;
+        if (gameObject.name == "Slow")
+        {
+            enemySpeed = 0.4f;
+            anim.SetFloat("speed", 0.4f);
+        }
+        else enemySpeed = 1;
+        anim.SetFloat("speed", 0.4f);
     }
 
     void IsDead()
