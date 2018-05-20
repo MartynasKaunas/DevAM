@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Taikymasis : MonoBehaviour {
+public class Taikymasis : MonoBehaviour
+{
 
     public GameObject basicShotParticle;
     public GameObject cannonShotParticle;
@@ -20,8 +21,8 @@ public class Taikymasis : MonoBehaviour {
     public static float speed = 50;     //Sviedinio greitis. Žiauriai priklauso ir nuo sviedinio masės Prefabs >> Projectile >> Rigidbody2D >> Mass
     public static int weaponType = 1;   //1 - pradinis ginklas, 2 - shotgun'as, 3 - didelė patranka
     private Rigidbody2D rb;
-	public bool readyToShoot = true;
-	public int shot = 0;
+    public bool readyToShoot = true;
+    public int shot = 0;
     public static float fireRate = 0.5f;
     float nextFire;
 
@@ -31,15 +32,16 @@ public class Taikymasis : MonoBehaviour {
     }
 
     void Update()
-    {       
+    {
         Rotate();
         audioSource.pitch = Random.Range(volLowRange, volHighRange);
 
         Vector2 exitPoint = new Vector2(exit_Point.transform.position.x, exit_Point.transform.position.y);
         Vector2 particleExitPoint = new Vector2(exit_Point.transform.position.x - 1, exit_Point.transform.position.y);
-		if (shot == 1) {
-			shot = 0;
-		}
+        if (shot == 1)
+        {
+            shot = 0;
+        }
 
         if (Input.GetButtonDown("Fire1") && Player.magazineEmpty == false && Time.time > nextFire) //Viršuje unity lango   Edit >> Project settings >> Input >> Axes >> Fire1
         {
@@ -61,10 +63,10 @@ public class Taikymasis : MonoBehaviour {
                     GameObject shot = (GameObject)Instantiate(projectilePrefab, exitPoint, rotation);
                     rb = shot.GetComponent<Rigidbody2D>();
                     rb.AddForce(direction * speed);
-                    Instantiate(basicShotParticle, particleExitPoint, rotation);               
+                    Instantiate(basicShotParticle, particleExitPoint, rotation);
                     Player.bulletCount -= 1;
                     break;
-           
+
                 case 2:
 
                     Vector2 target1 = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
@@ -96,7 +98,7 @@ public class Taikymasis : MonoBehaviour {
                     Instantiate(shotgunShotParticle, particleExitPoint, rotation2);
 
                     Player.bulletCount -= 3;
-                    if(Player.bulletCount < 0)
+                    if (Player.bulletCount < 0)
                         Player.bulletCount = 0;
                     break;
 
@@ -112,7 +114,7 @@ public class Taikymasis : MonoBehaviour {
 
                     GameObject shotB = (GameObject)Instantiate(projectilePrefab, exitPoint, rotationB);
                     shotB.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                    rb = shotB.GetComponent<Rigidbody2D>();              
+                    rb = shotB.GetComponent<Rigidbody2D>();
                     rb.AddForce(directionB * speed * 50);
                     rb.mass = 0.2f;
 
@@ -120,36 +122,37 @@ public class Taikymasis : MonoBehaviour {
 
                     Player.bulletCount -= 1;
                     break;
-            }               
+            }
         }
-		if (Input.GetButton ("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false && Time.time > nextFire) {
+        if (Input.GetButton("Fire1") == true && weaponType == 4 && Player.magazineEmpty == false && Time.time > nextFire)
+        {
 
             audioSource.PlayOneShot(ShotSound);
             nextFire = Time.time + fireRate / 3;
 
-            Vector2 targetC = Camera.main.ScreenToWorldPoint (new Vector2 (Input.mousePosition.x, Input.mousePosition.y));
+            Vector2 targetC = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-			Vector2 directionC = targetC - exitPoint;
-			Quaternion rotationC = Quaternion.Euler (0, 0, Mathf.Atan2 (directionC.y, directionC.x) * Mathf.Rad2Deg);
-			transform.rotation = rotationC;
+            Vector2 directionC = targetC - exitPoint;
+            Quaternion rotationC = Quaternion.Euler(0, 0, Mathf.Atan2(directionC.y, directionC.x) * Mathf.Rad2Deg);
+            transform.rotation = rotationC;
 
-			directionC.Normalize ();
+            directionC.Normalize();
 
-			GameObject shotC = (GameObject)Instantiate (projectilePrefab, exitPoint, rotationC);
-			rb = shotC.GetComponent<Rigidbody2D> ();
-			rb.AddForce (directionC * speed * 4);
+            GameObject shotC = (GameObject)Instantiate(projectilePrefab, exitPoint, rotationC);
+            rb = shotC.GetComponent<Rigidbody2D>();
+            rb.AddForce(directionC * speed * 4);
 
-			//StartCoroutine (ShootDelayAR ());
+            //StartCoroutine (ShootDelayAR ());
 
-			Instantiate (basicShotParticle, particleExitPoint, rotationC);      
+            Instantiate(basicShotParticle, particleExitPoint, rotationC);
 
-			Player.bulletCount -= 1;
-		}
-	}
-	IEnumerator ShootDelayAR()
-	{
-		yield return new WaitForSeconds (0.5f);
-	}
+            Player.bulletCount -= 1;
+        }
+    }
+    IEnumerator ShootDelayAR()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
 
     //Bokštelio vamzdis sukasi pelės kryptimi
     void Rotate()
@@ -158,5 +161,6 @@ public class Taikymasis : MonoBehaviour {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-    }  
+    }
 }
+

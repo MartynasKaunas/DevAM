@@ -37,7 +37,7 @@ public class shopMenu : MonoBehaviour
 	public static bool ArBought = false;
 
     public int currentlyOpen = 0;
-    int temp_currentLevel = 1;
+    public static int temp_currentLevel = 1;
     // Use this for initialization
     void Start()
     {
