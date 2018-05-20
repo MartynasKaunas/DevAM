@@ -30,6 +30,7 @@ public class shopMenu : MonoBehaviour
     public AudioClip LevelClear;
     private AudioSource audioSource;
 
+    public bool soundPlayed = false;
 
     public static bool shotgunBought = false;
     public static bool cannonBought = false;
@@ -67,6 +68,7 @@ public class shopMenu : MonoBehaviour
     public void Resume()
     {
         levelClear = false;
+        soundPlayed = false;
         shopMenuUI.SetActive(false);
         allUI.SetActive(true);
         Time.timeScale = 1f;
@@ -77,7 +79,11 @@ public class shopMenu : MonoBehaviour
     {
         if (levelClear == true)
         {
-            audioSource.PlayOneShot(LevelClear);
+            if (soundPlayed == false)
+            {
+                audioSource.PlayOneShot(LevelClear);
+                soundPlayed = true;
+            }
             shopMenuUI.SetActive(true);
             allUI.SetActive(false);
             Time.timeScale = 0f;
