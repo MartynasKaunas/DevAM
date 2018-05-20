@@ -115,10 +115,11 @@ public class BossAbility : MonoBehaviour
             Player.score += scoreValue;
             //anim.SetBool("death", true);
 
-            Destroy(gameObject);
+           
             Spawner.currentlyAlive--;
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
                 FindObjectOfType<Ending>().NextLevel();
+            Destroy(gameObject);
         }
     }
 
