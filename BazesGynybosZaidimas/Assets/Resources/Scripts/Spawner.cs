@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public Text leftForLevel;
     bool isSpawning = false;
     public static float minTime = 3.0f;
-    public static float maxTime = 8.0f;
+    public static float maxTime = 7.0f;
     public GameObject enemyPrefab;    //lėtas
 
     public static float slowSpeedBuff = 0;
@@ -138,8 +138,8 @@ public class Spawner : MonoBehaviour
         leftToSpawn = (Random.Range(1, 6) + level++ * 3);
         if (minTime > 0.03f)
         {
-            minTime = minTime * 0.9f;
-            maxTime = maxTime * 0.9f;
+            minTime = minTime * 0.8f;
+            maxTime = maxTime * 0.8f;
         }
 
         slowHPBuff += 2;

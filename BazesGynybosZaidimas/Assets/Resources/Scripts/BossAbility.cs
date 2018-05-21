@@ -62,7 +62,7 @@ public class BossAbility : MonoBehaviour
 
     IEnumerator SpawnObject(float seconds)
     {
-           Debug.Log("Waiting for " + seconds + " seconds");
+           //Debug.Log("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
 

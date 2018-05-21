@@ -75,6 +75,9 @@ public class Ending : MonoBehaviour
                 shopMenu.cannonBought = false;
                 shopMenu.temp_currentLevel = 1;
 
+                Wall.current_wall_HP = 3;
+                Wall.HP = 3;
+
                 Spawner.level = 1;
                 Spawner.fastHPBuff = 0;
                 Spawner.fastSpeedBuff = 0;

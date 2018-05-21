@@ -308,7 +308,7 @@ MonoBehaviour:
   enemySpeed: 3
   curent_enemy_hp: 7
   enemy_HP: 7
-  scoreValue: 7
+  scoreValue: 9
   HP: {fileID: 114490506349140336}
   fanim: 10
   DeathSound: {fileID: 8300000, guid: 961bceb6b21ef66498a883da3075e077, type: 3}
