@@ -6,20 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
-
     public Text endReport;
     public static bool GameOver = false;
-
     public AudioClip GameOverMusic;
     public AudioSource SpawnerAudioSource;
     private AudioSource audioSource;
-
+	public Text highScoree;
 
     // Use this for initialization
     void Start()
     {
+		highScoree.text = "HighScore: " + PlayerPrefs.GetInt ("HighScore", 0).ToString ();
         audioSource = GetComponent<AudioSource>();
         endReport.text = "";
+		highScoree.enabled = false;
     }
 
     public void EndMePlz()
@@ -28,8 +28,15 @@ public class Ending : MonoBehaviour
         audioSource.PlayOneShot(GameOverMusic);
         endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " enemies and gathered " + Player.score + " points";
         GameOver = true;
+		highScoree.enabled = true;
     }
-
+	public void setScore()
+	{
+		if ((Player.score > PlayerPrefs.GetInt ("HighScore", 0)) && GameOver == true) {
+			PlayerPrefs.SetInt ("HighScore", Player.score);
+			highScoree.enabled = true;
+		}
+	}
     public void Freeze()
     {
         if (Time.timeScale == 0)
@@ -47,7 +54,7 @@ public class Ending : MonoBehaviour
 
     void Update()
     {
-
+		setScore ();
         if (Input.GetKeyDown("escape"))
         {
             if (GameOver == true)
