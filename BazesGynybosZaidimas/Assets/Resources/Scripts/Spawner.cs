@@ -124,6 +124,8 @@ public class Spawner : MonoBehaviour
         //For testing only
         if (Input.GetKeyDown("l"))
             LevelUpSpawner();
+        if (Input.GetKeyDown("k"))
+            Player.score += 50;
         if (shopMenu.levelClear) audioSource.Stop();
     }
 

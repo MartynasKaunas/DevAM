@@ -29,7 +29,9 @@ public class Wall : MonoBehaviour
             if (current_wall_HP <= 0)
             {
                 invincible = false;
+                enemyMove();
                 WallUI.SetActive(false);
+                
             }
         }
 
@@ -55,6 +57,8 @@ public class Wall : MonoBehaviour
         {
             invincible = false;
             WallUI.SetActive(false);
+           
+
         }
 
     }
@@ -88,7 +92,18 @@ public class Wall : MonoBehaviour
                 Player.score -= 100;
             }
         }
+    }
 
+    public void enemyMove()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            Animator e = enemy.GetComponent<Animator>();
+            Enemy ee = enemy.GetComponent<Enemy>();
 
+            ee.enemySpeed = 2;
+            e.SetFloat("speed", 5);
+        }
     }
 }

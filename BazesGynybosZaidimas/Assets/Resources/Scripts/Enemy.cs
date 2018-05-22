@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour {
             audioSource.pitch = Random.Range(0.3f, 1f);
             audioSource.volume = Random.Range(0.009f, 0.02f);
             audioSource.PlayOneShot(AttackSound);
+            anim.SetFloat("speed", 0.4f);
         }
 		if(col.gameObject.tag == "Trap")
 		{
@@ -77,11 +78,6 @@ public class Enemy : MonoBehaviour {
 
 	public void Movement(){		
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);
-        if (Wall.current_wall_HP <= 0)
-        {
-            enemySpeed = 1.5f;
-            anim.SetFloat("speed", 2);
-        }
     }
 
     public void Recoil(){
