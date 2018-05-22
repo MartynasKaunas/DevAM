@@ -12,11 +12,13 @@ public class Ending : MonoBehaviour
     public AudioSource SpawnerAudioSource;
     private AudioSource audioSource;
 	public Text highScoree;
+    public int previousHighScore;
 
     // Use this for initialization
     void Start()
     {
-		highScoree.text = "HighScore: " + PlayerPrefs.GetInt ("HighScore", 0).ToString ();
+        previousHighScore = PlayerPrefs.GetInt("HighScore");
+        highScoree.text = "HighScore: " + PlayerPrefs.GetInt ("HighScore", 0).ToString ();
         audioSource = GetComponent<AudioSource>();
         endReport.text = "";
 		highScoree.enabled = false;
@@ -28,6 +30,8 @@ public class Ending : MonoBehaviour
         audioSource.PlayOneShot(GameOverMusic);
         endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " enemies and gathered " + Player.score + " points";
         GameOver = true;
+        Debug.Log(previousHighScore);
+        if (Player.score > previousHighScore) highScoree.text = "New high score!";
 		highScoree.enabled = true;
     }
 	public void setScore()

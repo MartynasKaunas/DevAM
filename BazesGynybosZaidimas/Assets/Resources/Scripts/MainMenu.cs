@@ -12,7 +12,11 @@ public class MainMenu : MonoBehaviour {
     public GameObject HelpButton;
     public GameObject QuitButton;
     public GameObject BackButton;
+    public GameObject ResetButton;
     public GameObject TeamName;
+    public GameObject AreYouSureText;
+    public GameObject ConfirmButton;
+    public GameObject CancelButton;
     public Text HelpText;
     public static string pagalba = "Jūs valdote bokštelį su patranka." + Environment.NewLine +
                         "Jūsų tikslas - kuo ilgiau išgyventi, pereiti kuo daugiau lygių ir surinkti kuo daugiau taškų." + Environment.NewLine +
@@ -41,6 +45,7 @@ public class MainMenu : MonoBehaviour {
         PlayButton.SetActive(true);
         HelpButton.SetActive(true);
         QuitButton.SetActive(true);
+        ResetButton.SetActive(true);
         BackButton.SetActive(false);
         TeamName.SetActive(true);
         HelpText.enabled = false;
@@ -54,9 +59,32 @@ public class MainMenu : MonoBehaviour {
         PlayButton.SetActive(false);
         HelpButton.SetActive(false);
         QuitButton.SetActive(false);
+        ResetButton.SetActive(false);
         BackButton.SetActive(true);
         TeamName.SetActive(false);
         HelpText.enabled = true;
         HelpText.text = pagalba;
+    }
+
+    public void AreYouSure()
+    {
+        AreYouSureText.SetActive(true);
+        ConfirmButton.SetActive(true);
+        CancelButton.SetActive(true);
+    }
+
+    public void Cancel()
+    {
+        AreYouSureText.SetActive(false);
+        ConfirmButton.SetActive(false);
+        CancelButton.SetActive(false);
+    }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+        AreYouSureText.SetActive(false);
+        ConfirmButton.SetActive(false);
+        CancelButton.SetActive(false);
     }
 }

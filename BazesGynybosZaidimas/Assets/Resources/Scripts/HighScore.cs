@@ -16,7 +16,8 @@ public class HighScore : MonoBehaviour {
 	}
 	public void setScore()
 	{
-		if ((Player.score > PlayerPrefs.GetInt ("HighScore", 0)) && Player.current_player_HP <= 0) {
+        highScore.text = "New high score!";
+        if ((Player.score > PlayerPrefs.GetInt ("HighScore", 0)) && Player.current_player_HP <= 0) {
 			PlayerPrefs.SetInt ("HighScore", Player.score);
 		}
 	}
