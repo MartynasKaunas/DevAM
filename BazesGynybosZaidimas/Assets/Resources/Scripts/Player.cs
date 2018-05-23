@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public static int bulletCount = maxBulletCount;
     public static int weaponDamage = 1;
 
+    public static bool magazineLow = false;
     public static bool magazineEmpty = false;
 
     public GameObject smokeParticle;
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     public Text HP_text;
 
     void Start()
-    {       
+    {
         StartCoroutine(RegenerateMana());
         MP_text.text = "MP";
         HP_text.text = "HP";
@@ -97,10 +98,14 @@ public class Player : MonoBehaviour
     public void TrackBullets()
     {
         bulletsText.text = "Bullets: " + bulletCount;
-        if (bulletCount <= 0)
+        if (bulletCount <= 10)
         {
-            magazineEmpty = true;
-            bulletsText.text = "press R to reload";
+            magazineLow = true;
+            if (bulletCount == 0)
+            {
+                magazineEmpty = true;
+                bulletsText.text = "press R to reload";
+            }
         }
 
     }
@@ -112,7 +117,7 @@ public class Player : MonoBehaviour
 
     public void Reload()
     {
-        if (magazineEmpty == true && Input.GetKeyDown(KeyCode.R))
+        if (magazineLow == true && Input.GetKeyDown(KeyCode.R))
         {
 
             StartCoroutine(LoadingReload());
@@ -124,11 +129,13 @@ public class Player : MonoBehaviour
     IEnumerator reloadPistol()
     {
         yield return new WaitForSeconds(reloadWaitFor);
+        magazineLow = false;
         magazineEmpty = false;
         bulletCount = maxBulletCount;
 
 
     }
+
     public float cur_reload = 0;
     public static float s_reload = 1;
 
@@ -141,6 +148,7 @@ public class Player : MonoBehaviour
         }
         cur_reload = 0;
     }
+
     public static float reloadWaitFor = 1f;
 
     IEnumerator RegenerateMana()

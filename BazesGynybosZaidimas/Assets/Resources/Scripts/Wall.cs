@@ -29,8 +29,9 @@ public class Wall : MonoBehaviour
             if (current_wall_HP <= 0)
             {
                 invincible = false;
+                enemyMove();
                 WallUI.SetActive(false);
-                current_wall_HP = HP;
+                
             }
         }
 
@@ -56,23 +57,24 @@ public class Wall : MonoBehaviour
         {
             invincible = false;
             WallUI.SetActive(false);
-            // current_wall_HP = HP;
+           
+
         }
 
     }
 
     public void UpgrageeWall()
     {
-        if (Player.score > 100)
+        if (Player.score > 50)
         {
-            // Wall.placeWall();
-
-            //  current_wall_HP += 1;
-            Debug.Log(HP);
-            HP = HP + 1;
-            Debug.Log(HP);
-            current_wall_HP = HP;
-            Player.score -= 100;
+            if (WallUI.active)
+            {
+                Debug.Log(HP);
+                HP = HP + 1;
+                Debug.Log(HP);
+                current_wall_HP = HP;
+                Player.score -= 50;
+            }
         }
 
 
@@ -80,16 +82,28 @@ public class Wall : MonoBehaviour
 
     public void placeWall()
     {
+        Debug.Log(Wall.current_wall_HP);
         if (Player.score > 100)
         {
-            // Wall.placeWall();
-
-            current_wall_HP = HP;
-            WallUI.SetActive(true);
-            Player.score -= 100;
-            //Instantiate(prefab, new Vector3(6, -2, 0), Quaternion.identity);
+            if (Wall.current_wall_HP <= 0)
+            {
+                current_wall_HP = HP;
+                WallUI.SetActive(true);
+                Player.score -= 100;
+            }
         }
+    }
 
+    public void enemyMove()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        {
+            Animator e = enemy.GetComponent<Animator>();
+            Enemy ee = enemy.GetComponent<Enemy>();
 
+            ee.enemySpeed = 2;
+            e.SetFloat("speed", 5);
+        }
     }
 }

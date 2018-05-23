@@ -37,7 +37,7 @@ public class shopMenu : MonoBehaviour
 	public static bool ArBought = false;
 
     public int currentlyOpen = 0;
-    int temp_currentLevel = 1;
+    public static int temp_currentLevel = 1;
     // Use this for initialization
     void Start()
     {
@@ -300,9 +300,9 @@ public class shopMenu : MonoBehaviour
 
 	public void UpgradeManaRegen()
 	{
-		if (Player.score > 50 && Player.MPRegenDelay >= 0.1) {
+		if (Player.score > 20 && Player.MPRegenDelay >= 0.1) {
 			Player.MPRegenDelay -= 0.1f;
-			Player.score -= 50;
+			Player.score -= 20;
 
 		}
 	}

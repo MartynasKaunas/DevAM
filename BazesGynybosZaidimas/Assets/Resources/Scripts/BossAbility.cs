@@ -6,7 +6,7 @@ using UnityEngine;
 public class BossAbility : MonoBehaviour
 {
 
-
+    public GameObject dieAnimationPrefab;
     public Animator anim;//animacija
     public GameObject damageTakenParticle;
     public GameObject enemyPrefab;
@@ -62,7 +62,7 @@ public class BossAbility : MonoBehaviour
 
     IEnumerator SpawnObject(float seconds)
     {
-           Debug.Log("Waiting for " + seconds + " seconds");
+           //Debug.Log("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
 
@@ -111,6 +111,8 @@ public class BossAbility : MonoBehaviour
     {
         if (curent_enemy_hp <= 0)
         {
+            Vector3 V = new Vector3(transform.position.x, transform.position.y);
+            GameObject death = Instantiate(dieAnimationPrefab, V, transform.rotation);
             count_deaths_this_enemy++;
             Player.score += scoreValue;
             //anim.SetBool("death", true);

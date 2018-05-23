@@ -11,26 +11,26 @@ public class Spawner : MonoBehaviour
     public static int currentlyAlive = 3;   //pradžioje yra trys gyvi, kai juos ištrinsim reiks pakeisti į 0
     public Text leftForLevel;
     bool isSpawning = false;
-    public float minTime = 3.0f;
-    public float maxTime = 8.0f;
+    public static float minTime = 3.0f;
+    public static float maxTime = 7.0f;
     public GameObject enemyPrefab;    //lėtas
 
-    public float slowSpeedBuff = 0;
-    public int slowHPBuff = 0;
+    public static float slowSpeedBuff = 0;
+    public static int slowHPBuff = 0;
 
     public GameObject enemyPrefab1;   //greitas
 
-    public float fastSpeedBuff = 0;
-    public int fastHPBuff = 0;
+    public static float fastSpeedBuff = 0;
+    public static int fastHPBuff = 0;
 
     public GameObject enemyPrefab2;   //skraido
 
-    public float flyingSpeedBuff = 0;
-    public int flyingHPBuff = 0;
+    public static float flyingSpeedBuff = 0;
+    public static int flyingHPBuff = 0;
 
     public GameObject enemyPrefabBoss;   //Bossas
 
-    public int BossHPBuff = 0;
+    public static int BossHPBuff = 0;
 
     public AudioClip levelMusic1;
     public AudioClip levelMusic2;
@@ -60,11 +60,11 @@ public class Spawner : MonoBehaviour
 
         if (level % 10 == 0)
         {
-            Vector3 V_Boss = new Vector3(-12,1,0);
+            Vector3 V_Boss = new Vector3(-12, 1, 0);
             GameObject enemyBoss = Instantiate(enemyPrefabBoss, V_Boss, transform.rotation);
             BossAbility B = enemyBoss.GetComponent<BossAbility>();
-            B.enemy_HP += BossHPBuff*level/2;
-            B.curent_enemy_hp += BossHPBuff*level/2;
+            B.enemy_HP += BossHPBuff * level / 2;
+            B.curent_enemy_hp += BossHPBuff * level / 2;
             leftToSpawn = 0;//one less enemy left
             currentlyAlive++;
         }
@@ -122,8 +122,10 @@ public class Spawner : MonoBehaviour
         //Debug.Log(trackMusic);
 
         //For testing only
-        if (Input.GetKey("l"))
+        if (Input.GetKeyDown("l"))
             LevelUpSpawner();
+        if (Input.GetKeyDown("k"))
+            Player.score += 50;
         if (shopMenu.levelClear) audioSource.Stop();
     }
 
@@ -135,16 +137,28 @@ public class Spawner : MonoBehaviour
 
     public void LevelUpSpawner()
     {
-        leftToSpawn = (Random.Range(1, 6) + level++*3);
-        minTime = minTime * 0.9f;
-        maxTime = maxTime * 0.9f;
+        leftToSpawn = (Random.Range(1, 6) + level++ * 3);
+        if (minTime > 0.03f)
+        {
+            minTime = minTime * 0.8f;
+            maxTime = maxTime * 0.8f;
+        }
 
         slowHPBuff += 2;
-        slowSpeedBuff += 1f;
+        if (slowSpeedBuff < 10f)
+        {
+            slowSpeedBuff += 1f;
+        }
         fastHPBuff += 1;
-        fastSpeedBuff += 1.5f;
+        if (fastSpeedBuff < 20f)
+        {
+            fastSpeedBuff += 1.5f;
+        }
         flyingHPBuff += 2;
-        flyingSpeedBuff += 0.5f;
+        if (flyingSpeedBuff < 15f)
+        {
+            flyingSpeedBuff += 0.5f;
+        }
         BossHPBuff += 100;
     }
 

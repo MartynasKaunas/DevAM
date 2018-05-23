@@ -73,11 +73,9 @@ public class test2345 {
 
         int enemyCount1 = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
-        p1.minTime = 1f;
-        p1.maxTime = 2f;
         p1.LevelUpSpawner();
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(30f);
 
         int enemyCount2 = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
