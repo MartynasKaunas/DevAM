@@ -30,7 +30,7 @@ public class Ending : MonoBehaviour
         audioSource.PlayOneShot(GameOverMusic);
         endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " enemies and gathered " + Player.score + " points";
         GameOver = true;
-        Debug.Log(previousHighScore);
+        //Debug.Log(previousHighScore);
         if (Player.score > previousHighScore) highScoree.text = "New high score!";
 		highScoree.enabled = true;
     }
