@@ -375,6 +375,8 @@ MonoBehaviour:
   anim: {fileID: 95466023178355806}
   damageTakenParticle: {fileID: 1357259761295042, guid: 46b49313ae68f1741a647509635763b1,
     type: 2}
+  dieAnimationPrefab: {fileID: 1447140424572172, guid: 3162dfaab2391194baf31a0743c57448,
+    type: 2}
   enemySpeed: 10
   curent_enemy_hp: 1
   enemy_HP: 1

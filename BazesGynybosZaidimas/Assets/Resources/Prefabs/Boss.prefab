@@ -281,6 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f8b3a6d25652e49be4a92797169f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieAnimationPrefab: {fileID: 1948263586151266, guid: 536ed85426637f14c95de9e910524129,
+    type: 2}
   anim: {fileID: 95637825093574026}
   damageTakenParticle: {fileID: 1357259761295042, guid: 46b49313ae68f1741a647509635763b1,
     type: 2}
@@ -349,6 +351,7 @@ MonoBehaviour:
   anim: {fileID: 95637825093574026}
   damageTakenParticle: {fileID: 1357259761295042, guid: 46b49313ae68f1741a647509635763b1,
     type: 2}
+  dieAnimationPrefab: {fileID: 0}
   enemySpeed: 1
   curent_enemy_hp: 10
   enemy_HP: 10
