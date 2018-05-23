@@ -60,8 +60,8 @@ public class shopMenu : MonoBehaviour
 
         if (Spawner.level == temp_currentLevel + 1)
         {
-            temp_currentLevel = Spawner.level;
-            levelClear = true;
+                temp_currentLevel = Spawner.level;
+                levelClear = true;
         }
     }
 
