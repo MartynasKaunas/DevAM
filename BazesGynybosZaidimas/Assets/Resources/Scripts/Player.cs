@@ -91,7 +91,6 @@ public class Player : MonoBehaviour
         if (current_player_HP == 0)
         {
             FindObjectOfType<Ending>().EndMePlz();
-            enemyMove();
             Destroy(gameObject);
         }
     }
@@ -179,19 +178,6 @@ public class Player : MonoBehaviour
         {
             Instantiate(smokeParticle, smokeOrigin2.transform.position, smokeOrigin2.transform.rotation);
             smoke2 = true;
-        }
-    }
-
-    public void enemyMove()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Animator e = enemy.GetComponent<Animator>();
-            Enemy ee = enemy.GetComponent<Enemy>();
-
-            ee.enemySpeed = 3;
-            e.SetFloat("speed", 5);
         }
     }
 }

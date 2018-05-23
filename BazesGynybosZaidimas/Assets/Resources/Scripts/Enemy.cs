@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 
     public Animator anim;//animacija
     public GameObject damageTakenParticle;
+    public GameObject dieAnimationPrefab;
     public float enemySpeed = 1;         // How fast enemy is moving
     public float curent_enemy_hp = 10;   //  public float start_hp;
     public int enemy_HP = 10;
@@ -76,7 +77,9 @@ public class Enemy : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(10, 10);
     }
 
-	public void Movement(){		
+   
+
+    public void Movement(){		
 		transform.Translate (Vector2.right * Time.deltaTime * enemySpeed);
     }
 
@@ -99,10 +102,13 @@ public class Enemy : MonoBehaviour {
             {
                   Spawner.currentlyAlive--;
             }
+            Vector3 V = new Vector3(transform.position.x, transform.position.y);
+            GameObject death = Instantiate(dieAnimationPrefab, V, transform.rotation);
             count_deaths_this_enemy++;
             Player.score += scoreValue;
             anim.SetBool("death", true);
 
+        
             Destroy(gameObject);
 
             if (Spawner.leftToSpawn == 0 && Spawner.currentlyAlive == 0)
