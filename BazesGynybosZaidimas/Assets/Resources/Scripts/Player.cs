@@ -40,8 +40,12 @@ public class Player : MonoBehaviour
     public Text MP_text;
     public Text HP_text;
 
+    public AudioClip reloadSound;
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(RegenerateMana());
         MP_text.text = "MP";
         HP_text.text = "HP";
@@ -120,7 +124,7 @@ public class Player : MonoBehaviour
     {
         if (magazineLow == true && Input.GetKeyDown(KeyCode.R))
         {
-
+            audioSource.PlayOneShot(reloadSound);
             StartCoroutine(LoadingReload());
             StartCoroutine(reloadPistol());
 

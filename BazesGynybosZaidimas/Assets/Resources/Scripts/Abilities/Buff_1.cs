@@ -8,6 +8,11 @@ public class Buff_1 : MonoBehaviour {
     public GameObject buffParticle;
     public GameObject particleSource;
 
+    public GameObject ready;
+    public GameObject down;
+    public GameObject Q;
+    public GameObject background;
+
     public int AbilityCost = 50;
     public int BuffDuration = 7;
 
@@ -33,6 +38,25 @@ public class Buff_1 : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if(Player.current_player_MP >= 50)
+        {
+            ready.SetActive(true);
+            down.SetActive(false);
+            Q.SetActive(true);
+            background.SetActive(true);
+        }
+        else
+        {
+            Q.SetActive(false);
+            ready.SetActive(false);
+            down.SetActive(false);
+            background.SetActive(false);
+        }
+        if (BuffActive)
+        {
+            ready.SetActive(false);
+            down.SetActive(true);
+        }
         if (Input.GetButtonDown("Ability1"))
         {
             if (Player.current_player_MP >= AbilityCost)
