@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Ending : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Ending : MonoBehaviour
     public AudioClip GameOverMusic;
     public AudioSource SpawnerAudioSource;
     private AudioSource audioSource;
+    public GameObject returntext;
 	public Text highScoree;
     public int previousHighScore;
 
@@ -22,17 +24,19 @@ public class Ending : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         endReport.text = "";
 		highScoree.enabled = false;
+        returntext.SetActive(false);
     }
 
     public void EndMePlz()
     {
         SpawnerAudioSource.Stop();
         audioSource.PlayOneShot(GameOverMusic);
-        endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " enemies and gathered " + Player.score + " points";
+        endReport.text = "GAME OVER" /*ゲーム　オーワ"*/ + System.Environment.NewLine + " You shot " + Enemy.count_deaths_this_enemy + " enemies and gathered " + Player.score + " points ";
         GameOver = true;
         //Debug.Log(previousHighScore);
         if (Player.score > previousHighScore) highScoree.text = "New high score!";
 		highScoree.enabled = true;
+        returntext.SetActive(true);
     }
 	public void setScore()
 	{
